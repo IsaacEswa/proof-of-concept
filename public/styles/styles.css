@@ -135,22 +135,7 @@
 /* Mobile image / cover— same position for odd & even */
 .timeline ul li:nth-child(odd) .timeline-cover,
 .timeline ul li:nth-child(even) .timeline-cover {
-    /* position: absolute;
-    top: -30px;
-    left: 50px;
-    right: inherit; */
-    /* margin: 0;
-    padding: 8px 16px;
-    background: rgba(233, 33, 99, 1);
-    color: #fff;
-    border-radius: 18px;
-    box-shadow: 0 0 0 3px rgba(233, 33, 99, 0.3); */
-
     position: relative;
-    /* top: auto;
-    left: auto;
-    right: auto; */
-    /* margin-top: 1rem; */
     overflow: hidden;
 }
 
@@ -180,7 +165,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1.5rem;
+    padding: 5.5rem;
     color: #fff;
 }
 
@@ -228,15 +213,35 @@
         left: -4px;
     }
 
+    .timeline ul li .content {
+        position: static;
+        inset: auto;
+        color: inherit;
+        padding: 0;
+    }
+
+    /* Restore .timeline-cover to absolute badge on desktop */
     .timeline ul li:nth-child(odd) .timeline-cover {
+        position: absolute;
         top: 12px;
         right: -165px;
         left: auto;
+        width: 150px;
+        height: 100px;
     }
 
     .timeline ul li:nth-child(even) .timeline-cover {
+        position: absolute;
         top: 12px;
         left: -165px;
+        width: 150px;
+        height: 100px;
+    }
+
+    /* Desktop image fills the cover box */
+    .timeline ul li:nth-child(odd) .timeline-cover img,
+    .timeline ul li:nth-child(even) .timeline-cover img {
+        height: 100%;
     }
 }
 
