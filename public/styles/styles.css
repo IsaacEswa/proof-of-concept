@@ -2,6 +2,21 @@
 
     .timeline-container {
         position: relative;
+        margin: auto;
+
+
+        @media (min-width: 768px) {
+            /* width: 75%; */
+
+
+            .timeline-item:nth-child(even) .timeline-article {
+                direction: rtl;
+            }
+
+            .timeline-item:nth-child(even) .timeline-article>* {
+                direction: ltr;
+            }
+        }
 
         /* timeline-line */
         &&::before {
@@ -71,6 +86,7 @@
                 @media (min-width: 768px) {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
+                    gap: 3em;
                 }
 
 
