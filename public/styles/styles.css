@@ -1,7 +1,9 @@
 .timeline {
+
     .timeline-container {
         position: relative;
 
+        /* timeline-line */
         &&::before {
             content: "";
             position: absolute;
@@ -18,8 +20,50 @@
             column-gap: 1em;
             overflow: hidden;
 
+            color: var(--tertiary-color);
+
             .timeline-year {
                 text-align: center;
+                font-weight: 400;
+                font-style: italic;
+                position: relative;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: -.5px;
+                    top: 50%;
+                    transform: translate(50%, -50%);
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: var(--tertiary-color);
+                    border: 5px solid var(--primary-color);
+                }
+            }
+
+            .timeline-article {
+                display: flex;
+                flex-direction: column;
+                gap: .5em;
+
+                date {
+                    font-weight: 400;
+                }
+
+                .timeline-title {
+                    font-weight: 600;
+                }
+
+                .timeline-description {
+                    font-weight: 200;
+                    max-width: 90%;
+                }
+
             }
         }
     }
