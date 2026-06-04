@@ -19,6 +19,7 @@
             grid-template-columns: 20% 80%;
             column-gap: 1em;
             overflow: hidden;
+            padding-top: 3em;
 
             color: var(--tertiary-color);
 
@@ -27,6 +28,7 @@
                 font-weight: 400;
                 font-style: italic;
                 position: relative;
+
 
                 display: flex;
                 justify-content: center;
@@ -62,6 +64,13 @@
                 .timeline-description {
                     font-weight: 200;
                     max-width: 90%;
+                }
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+
                 }
 
             }
