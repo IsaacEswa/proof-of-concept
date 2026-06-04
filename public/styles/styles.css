@@ -1,0 +1,22 @@
+.timeline-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    overflow: hidden;
+    gap: 1em;
+}
+
+.timeline-years {
+    position: relative;
+    text-align: center;
+}
+
+.timeline-years::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--tertiary-color);
+    z-index: 10;
+}
