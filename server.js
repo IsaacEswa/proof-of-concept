@@ -13,7 +13,7 @@ app.set('views', './views')
 // https://fdnd-agency.directus.app/items/teylers_museum_persons | Creators
 
 const baseURL = 'https://fdnd-agency.directus.app/items/teylers_museum_'
-const timelineItem_fields = 'title, id, slug, exhibit, cover, content_block.*, start_year, end_year, era, summary'
+const timelineItem_fields = 'title, id, slug, exhibit, cover.*, content_blocks, start_year, end_year, era, summary'
 
 app.get('/', async function (request, response) {
     const params = new URLSearchParams()
@@ -23,7 +23,9 @@ app.get('/', async function (request, response) {
     const timelineDataResponse = await fetch(baseURL + 'exhibits_sections' + '?' + params.toString())
     const timelineDataResponseJSON = await timelineDataResponse.json()
 
-    console.log(timelineDataResponseJSON)
+
+    // console.log(timelineDataResponseJSON)
+    console.log(JSON.stringify(timelineDataResponseJSON.data[0], null, 2))
 
     response.render('index.liquid', { timelineItems: timelineDataResponseJSON.data })
 })

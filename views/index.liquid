@@ -1,38 +1,5 @@
 {% render 'partials/head.liquid' %}
 
-
-{% comment %} <section class="timeline">
-    <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2>
-
-
-    <div class="timeline-container">
-        <div class="timeline-item">
-            <time class="timeline-year">1745</time>
-            <article class="timeline-article">
-                <time datetime="1745">1745</time>
-                <h3 class="timeline-title">Uitvinding van de Leidse fles</h3>
-                <p class="timeline-description">Zonder de Leidse fles, een vroege “batterij” om elektriciteit op te
-                    slaan, zou de Grote
-                    Elektriseermachine niet mogelijk zijn geweest. Dit is de technische basis.</p>
-                <img src="/assets/placeholder.jpg">
-            </article>
-        </div>
-
-        <div class="timeline-item">
-            <time class="timeline-year">1745</time>
-            <article class="timeline-article">
-                <time datetime="1745">1745</time>
-                <h3 class="timeline-title">Uitvinding van de Leidse fles</h3>
-                <p class="timeline-description">Zonder de Leidse fles, een vroege “batterij” om elektriciteit op te
-                    slaan, zou de Grote
-                    Elektriseermachine niet mogelijk zijn geweest. Dit is de technische basis.</p>
-                <img src="/assets/placeholder.jpg">
-            </article>
-        </div>
-
-    </div>
-</section> {% endcomment %}
-
 <section class="timeline">
     <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2>
     <div class="timeline-container">
@@ -43,8 +10,24 @@
             <article class="timeline-article">
                 <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
                 <h3 class="timeline-title">{{ timelineItem.title }}</h3>
-                <p class="timeline-description">{{ timelineItem.summary }}</p>
-                <img src="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover }}">
+                <p class="timeline-summary">{{ timelineItem.summary }}</p>
+
+                {% if timelineItem.cover %}
+                <picture>
+                    <source type="image/avif"
+                        srcset="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?fit=cover&format=avif&height=700&quality=80">
+
+                    <source type="image/webp"
+                        srcset="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?fit=cover&format=webp&height=700&quality=80">
+
+                    <img class="single-article-cover"
+                        src="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?height=700&quality=80"
+                        width="{{ timelineItem.cover.width }}" height="{{ timelineItem.cover.height }}">
+                </picture>
+                {% else %}
+                <img src="/assets/placeholder.jpg" alt="Geen afbeelding beschikbaar"">
+                {% endif %}          
+
             </article>
         </div>
         {% endfor %}
@@ -53,7 +36,11 @@
 
 {% render 'partials/foot.liquid' %}
 
-<details style="padding: 1rem; color: white;">
-    <summary>JSON</summary>
-    {{ timelineItems | json }}
-</details>
+              {% comment %}
+                {% for block in timelineItem.content_blocks %}
+                <p>{{ block.text }}</p>
+                {% endfor %} {% endcomment %}
+
+<details style=" padding: 1rem; color: white;">
+                <summary>JSON</summary>
+                {{ timelineItems | json }} </details>
