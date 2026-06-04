@@ -1,7 +1,9 @@
 {% render 'partials/head.liquid' %}
 
+
 <section class="timeline">
     <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2>
+
 
     <div class="timeline-container">
         <div class="timeline-item">
@@ -32,3 +34,8 @@
 </section>
 
 {% render 'partials/foot.liquid' %}
+
+<details style="padding: 1rem; color: white;">
+    <summary>JSON</summary>
+    {{ timelineData | json }}
+</details>
