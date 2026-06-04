@@ -18,14 +18,14 @@ const timelineItem_fields = 'title, id, slug, exhibit, cover, content_block.*, s
 app.get('/', async function (request, response) {
     const params = new URLSearchParams()
     params.set('fields', timelineItem_fields)
-    // params.set('sort', '-date')
+    params.set('sort', 'start_year')
 
     const timelineDataResponse = await fetch(baseURL + 'exhibits_sections' + '?' + params.toString())
     const timelineDataResponseJSON = await timelineDataResponse.json()
 
     console.log(timelineDataResponseJSON)
 
-    response.render('index.liquid', { timelineData: timelineDataResponseJSON.data })
+    response.render('index.liquid', { timelineItems: timelineDataResponseJSON.data })
 })
 
 app.use((req, res, next) => {
