@@ -1,7 +1,7 @@
 {% render 'partials/head.liquid' %}
 
 
-<section class="timeline">
+{% comment %} <section class="timeline">
     <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2>
 
 
@@ -30,6 +30,24 @@
             </article>
         </div>
 
+    </div>
+</section> {% endcomment %}
+
+<section class="timeline">
+    <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2>
+    <div class="timeline-container">
+
+        {% for timelineItem in timelineItems %}
+        <div class="timeline-item">
+            <time class="timeline-year" datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
+            <article class="timeline-article">
+                <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
+                <h3 class="timeline-title">{{ timelineItem.title }}</h3>
+                <p class="timeline-description">{{ timelineItem.summary }}</p>
+                <img src="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover }}">
+            </article>
+        </div>
+        {% endfor %}
     </div>
 </section>
 
