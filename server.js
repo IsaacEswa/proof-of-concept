@@ -24,8 +24,7 @@ app.get('/', async function (request, response) {
     const timelineDataResponseJSON = await timelineDataResponse.json()
 
 
-    // console.log(timelineDataResponseJSON)
-    console.log(JSON.stringify(timelineDataResponseJSON.data[0], null, 2))
+    console.log(timelineDataResponseJSON)
 
     response.render('index.liquid', { timelineItems: timelineDataResponseJSON.data })
 })

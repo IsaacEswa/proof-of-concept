@@ -1,32 +1,36 @@
 {% render 'partials/head.liquid' %}
 
 <section class="timeline">
-    <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2>
+    {% comment %} <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2> {% endcomment %}
     <div class="timeline-container">
 
         {% for timelineItem in timelineItems %}
         <div class="timeline-item">
+
             <time class="timeline-year" datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
             <article class="timeline-article">
-                <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
-                <h3 class="timeline-title">{{ timelineItem.title }}</h3>
-                <p class="timeline-summary">{{ timelineItem.summary }}</p>
+                <div class="timeline-article-content">
+                    <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
+                    <h3 class="timeline-title">{{ timelineItem.title }}</h3>
+                    <p class="timeline-summary">{{ timelineItem.summary }}</p>
+                </div>
 
-                {% if timelineItem.cover %}
-                <picture>
-                    <source type="image/avif"
-                        srcset="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?fit=cover&format=avif&height=700&quality=80">
+                <div class="timeline-article-image">
+                    {% if timelineItem.cover %}
+                    <picture>
+                        <source type="image/avif"
+                            srcset="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?fit=cover&format=avif&height=700&quality=80">
 
-                    <source type="image/webp"
-                        srcset="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?fit=cover&format=webp&height=700&quality=80">
+                        <source type="image/webp"
+                            srcset="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?fit=cover&format=webp&height=700&quality=80">
 
-                    <img class="single-article-cover"
-                        src="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?height=700&quality=80"
-                        width="{{ timelineItem.cover.width }}" height="{{ timelineItem.cover.height }}">
-                </picture>
-                {% else %}
-                <img src="/assets/placeholder.jpg" alt="Geen afbeelding beschikbaar"">
-                {% endif %}          
+                        <img src="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?height=700&quality=80"
+                            width="{{ timelineItem.cover.width }}" height="{{ timelineItem.cover.height }}" alt="">
+                    </picture>
+                    {% else %}
+                    <img src="/assets/placeholder.jpg" alt="Geen afbeelding beschikbaar">
+                    {% endif %}
+                </div>
 
             </article>
         </div>
@@ -36,11 +40,12 @@
 
 {% render 'partials/foot.liquid' %}
 
-              {% comment %}
-                {% for block in timelineItem.content_blocks %}
-                <p>{{ block.text }}</p>
-                {% endfor %} {% endcomment %}
+{% comment %}
+{% for block in timelineItem.content_blocks %}
+<p>{{ block.text }}</p>
+{% endfor %} {% endcomment %}
 
-<details style=" padding: 1rem; color: white;">
-                <summary>JSON</summary>
-                {{ timelineItems | json }} </details>
+{% comment %} <details style=" padding: 1rem; color: white;">
+    <summary>JSON</summary>
+    {{ timelineItems | json }}
+</details> {% endcomment %}
