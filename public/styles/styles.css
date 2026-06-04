@@ -1,0 +1,136 @@
+/* ─── Base (mobile) ─────────────────────────────────────── */
+.timeline {
+    position: relative;
+    width: 100%;
+
+    @media (min-width: 768px) {
+        margin: auto;
+    }
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    width: 2px;
+    height: 100%;
+    background: var(--tertiary-color);
+}
+
+.timeline ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+
+    @media (min-width: 768px) {
+        display: block;
+    }
+}
+
+
+.timeline ul li {
+    list-style: none;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    padding: 0 50px;
+}
+
+/* Mobile dot — same position for odd & even */
+.timeline ul li:nth-child(odd):before,
+.timeline ul li:nth-child(even):before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -18px;
+    left: 16px;
+    background: var(--tertiary-color);
+    border-radius: 50%;
+
+}
+
+/* Mobile time badge — same position for odd & even */
+.timeline ul li:nth-child(odd) .time,
+.timeline ul li:nth-child(even) .time {
+    /* position: absolute;
+    top: -30px;
+    left: 50px;
+    right: inherit; */
+
+    img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    @media (min-width: 768px) {
+        position: absolute;
+        /* top: -30px;
+        left: 50px; */
+        /* right: inherit; */
+    }
+}
+
+/* ─── ≥ 768px (tablet / desktop) ────────────────────────── */
+@media (min-width: 768px) {
+
+
+    /* .timeline {
+        padding: 40px 0;
+        width: 1000px;
+    } */
+
+    .timeline:before {
+        left: 50%;
+    }
+
+    /* Restore alternating two-column layout */
+    .timeline ul li {
+        width: 50%;
+        padding: 20px 40px;
+    }
+
+    .timeline ul li:nth-child(odd) {
+        float: left;
+        /* text-align: right; */
+        clear: both;
+    }
+
+    .timeline ul li:nth-child(even) {
+        float: right;
+        /* text-align: left; */
+        clear: both;
+    }
+
+    /* Restore desktop dots */
+    .timeline ul li:nth-child(odd):before {
+        top: 24px;
+        right: -6px;
+        left: auto;
+    }
+
+    .timeline ul li:nth-child(even):before {
+        top: 24px;
+        left: -4px;
+    }
+
+    /* Restore desktop time badges */
+    .timeline ul li:nth-child(odd) .time {
+        top: 12px;
+        right: -400px;
+        left: auto;
+    }
+
+    .timeline ul li:nth-child(even) .time {
+        top: 12px;
+        left: -400px;
+    }
+}
+
+/* ─── ≥ 1000px (wide desktop) ───────────────────────────── */
+@media (min-width: 1000px) {
+    .timeline {
+        width: 1000px;
+    }
+}
