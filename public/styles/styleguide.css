@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Bitter";
+    src: url('../fonts/Bitter.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url('../fonts/Inter.ttf') format('truetype');
+}
+
 :root {
     --primary-color: #123139;
     --secondary-color: #FFC900;
@@ -12,6 +22,14 @@
 
 body {
     background-color: var(--primary-color);
+    font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Bitter", serif;
+
 }
 
 section {
