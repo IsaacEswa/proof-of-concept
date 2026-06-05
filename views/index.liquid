@@ -1,7 +1,7 @@
 {% render 'partials/head.liquid' %}
 
-<section class="timeline" hidden>
-    <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2>
+<section class="timeline">
+    {% comment %} <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2> {% endcomment %}
     {% render 'partials/timeline-component.liquid', timelineItems: timelineItems %}
 
 </section>
