@@ -1,22 +1,7 @@
-html {
-    width: 100dvw;
-    overflow-x: clip;
-}
-
-body {
-    /* margin: 0;
-    height: 100vh;
-    display: grid;
-    place-items: center;
-    width: 100dvw; */
-    /* overflow-x: clip; */
-}
-
-section.quiz {
+.quiz {
     display: grid;
     place-items: center;
     overflow-x: clip;
-
 }
 
 card {
@@ -24,8 +9,8 @@ card {
     width: 18em;
     height: 30em;
 
-    display: grid;
-    place-items: center;
+    /* display: grid;
+    place-items: center; */
     background-color: var(--tertiary-color);
     z-index: calc(sibling-count() - sibling-index());
 
@@ -82,9 +67,4 @@ card.dragging {
     cursor: grabbing;
     transition: 0s;
     translate: calc(var(--delta-x, 0) * 1px) calc(var(--delta-y, 0) * 1px);
-}
-
-button {
-    min-width: 6em;
-    min-height: 2em;
 }
