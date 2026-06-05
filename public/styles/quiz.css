@@ -1,0 +1,90 @@
+html {
+    width: 100dvw;
+    overflow-x: clip;
+}
+
+body {
+    /* margin: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    width: 100dvw; */
+    /* overflow-x: clip; */
+}
+
+section.quiz {
+    display: grid;
+    place-items: center;
+    overflow-x: clip;
+
+}
+
+card {
+    grid-area: 1/1;
+    width: 18em;
+    height: 30em;
+
+    display: grid;
+    place-items: center;
+    background-color: var(--tertiary-color);
+    z-index: calc(sibling-count() - sibling-index());
+
+    @media (min-width: 768px) {
+        width: 30em;
+        height: 18em;
+    }
+
+}
+
+card:nth-child(1 of :not(.gone)) {
+    rotate: 0deg;
+    /* filter: brightness(1) grayscale(0); */
+    interactivity: auto;
+}
+
+card:nth-child(2 of :not(.gone)) {
+    rotate: 4deg;
+    /* filter: brightness(1.1) grayscale(.33); */
+}
+
+card:not(.gone) {
+    rotate: 8deg;
+    /* filter: brightness(1.2) grayscale(.67); */
+    interactivity: inert;
+}
+
+card {
+    transition:
+        opacity .5s .5s,
+        translate 1s,
+        rotate 1s .125s;
+
+    &.gone {
+        opacity: 0;
+    }
+
+    &.left {
+        translate:
+            calc(-50vw - 100% - var(--delta-x, 0) * 1px) calc(var(--delta-y, 0) * 1px);
+    }
+
+    &.right {
+        translate:
+            calc(50vw + 100% + var(--delta-x, 0) * 1px) calc(var(--delta-y, 0) * 1px);
+    }
+}
+
+card:hover {
+    cursor: grab;
+}
+
+card.dragging {
+    cursor: grabbing;
+    transition: 0s;
+    translate: calc(var(--delta-x, 0) * 1px) calc(var(--delta-y, 0) * 1px);
+}
+
+button {
+    min-width: 6em;
+    min-height: 2em;
+}
