@@ -1,8 +1,12 @@
 {% render 'partials/head.liquid' %}
 
-<section class="timeline">
+<section class="timeline" hidden>
     <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2>
     {% render 'partials/timeline-component.liquid', timelineItems: timelineItems %}
+
+</section>
+
+<section class="quiz">
 
 </section>
 
@@ -12,8 +16,3 @@
 {% for block in timelineItem.content_blocks %}
 <p>{{ block.text }}</p>
 {% endfor %} {% endcomment %}
-
-{% comment %} <details style=" padding: 1rem; color: white;">
-    <summary>JSON</summary>
-    {{ timelineItems | json }}
-</details> {% endcomment %}
