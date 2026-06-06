@@ -11,7 +11,7 @@
     {% for quizQuestion in quizQuestions %}
     <card>
         <button class="back-btn">Terug</button>
-        <span class="question-progress">Vraag 1/10</span>
+        <span class="question-progress">Vraag {{ quizQuestion.id }}/10</span>
         <h2>{{ quizQuestion.question }}</h2>
         <fieldset>
             {% for option in quizQuestion.options %}
@@ -22,7 +22,8 @@
             {% endfor %}
         </fieldset>
 
-        <p>Korte uitleg</p>
+        <p class="question-explanation-correct">{{ quizQuestion.explanation_correct }}</p>
+        <p class="question-explanation-wrong">{{ quizQuestion.explanation_wrong }}</p>
         <button class="next-btn">Volgende</button>
 
     </card>
