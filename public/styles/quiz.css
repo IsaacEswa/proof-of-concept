@@ -8,13 +8,31 @@
     width: 90%;
     background-color: var(--tertiary-color);
     padding: 2em 4em;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
 }
 
 .quiz-question {
     display: flex;
     flex-direction: column;
     gap: 1em;
+    padding-bottom: 1.5em;
 
+    position: relative;
+}
+
+.quiz-question::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 66%;
+    height: 1px;
+    background-color: var(--primary-color);
+    margin: auto;
 }
 
 .question-progress {
@@ -68,21 +86,23 @@
     }
 }
 
-.question-explanation-container {
-    /* margin-top: 1em; */
+/* .question-explanation-container {
     position: relative;
     padding-top: 1em;
-}
+} */
 
-.quiz-options:has([data-correct="true"]:checked)~.question-explanation-container .question-explanation-correct {
-    display: block;
-}
-
+.quiz-options:has([data-correct="true"]:checked)~.question-explanation-container .question-explanation-correct,
 .quiz-options:has(:checked):not(:has([data-correct="true"]:checked))~.question-explanation-container .question-explanation-wrong {
     display: block;
+    font-style: italic;
 }
 
-.quiz-question:has(.quiz-options :checked) .question-explanation-container::before {
+/* .quiz-options:has(:checked):not(:has([data-correct="true"]:checked))~.question-explanation-container .question-explanation-wrong {
+    display: block;
+    font-style: italic;
+} */
+
+/* .quiz-question:has(.quiz-options :checked) .question-explanation-container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -90,7 +110,17 @@
     width: 33%;
     height: 2px;
     background-color: var(--primary-color);
-}
+} */
+
+/* .quiz-question:has(.quiz-options :checked) .question-explanation-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33%;
+    height: 2px;
+    background-color: var(--primary-color);
+} */
 
 /* JS ENHANCEMENT */
 .quiz-card {
