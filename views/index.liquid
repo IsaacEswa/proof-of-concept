@@ -6,23 +6,27 @@
 
 </section>
 
+
 <section class="quiz">
+    {% for quizQuestion in quizQuestions %}
     <card>
         <button class="back-btn">Terug</button>
         <span class="question-progress">Vraag 1/10</span>
-        <h2>Vraag</h2>
+        <h2>{{ quizQuestion.question }}</h2>
         <fieldset>
-            <button type="radio">A:</button>
-            <button type="radio">B:</button>
-            <button type="radio">C:</button>
-            <button type="radio">D:</button>
+            {% for option in quizQuestion.options %}
+            <label>
+                <input type="radio" name="question-{{ quizQuestion.id }}" value="{{ option.key }}">
+                {{ option.key }}. {{ option.answer }}
+            </label>
+            {% endfor %}
         </fieldset>
 
         <p>Korte uitleg</p>
         <button class="next-btn">Volgende</button>
 
-
     </card>
+    {% endfor %}
 
 
 </section>
