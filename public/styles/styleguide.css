@@ -29,7 +29,7 @@ h1,
 h2,
 h3 {
     font-family: "Bitter", serif;
-
+    font-weight: 600;
 }
 
 section {
@@ -38,4 +38,8 @@ section {
     @media (min-width: 768px) {
         padding: 50px 50px;
     }
+}
+
+fieldset {
+    border: none;
 }

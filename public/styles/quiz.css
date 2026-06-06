@@ -4,6 +4,95 @@
     overflow-x: clip;
 }
 
+.quiz-component {
+    width: 90%;
+    background-color: var(--tertiary-color);
+    padding: 2em 4em;
+}
+
+.quiz-question {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+}
+
+.question-progress {
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+
+    .quiz-option {
+        border: 1px solid var(--primary-color);
+        padding: .5em 1em;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.quiz-option input[type="radio"] {
+    appearance: none;
+}
+
+.quiz-option:has([data-correct="true"]:checked) {
+    background-color: var(--secondary-color);
+}
+
+.quiz-question:has(:checked):not(:has([data-correct="true"]:checked)) .quiz-option:has(:checked) {
+    background-color: rgb(224, 104, 104);
+}
+
+.quiz-option:has([data-correct="true"]:checked) .option-indicator {
+    display: block;
+    padding-left: .5em;
+
+    &::after {
+        content: "✓";
+    }
+}
+
+.quiz-question:has(:checked):not(:has([data-correct="true"]:checked)) .quiz-option:has(:checked) .option-indicator {
+    display: block;
+    padding-left: .5em;
+
+    &::after {
+        content: "✗";
+    }
+}
+
+.question-explanation-container {
+    /* margin-top: 1em; */
+    position: relative;
+    padding-top: 1em;
+}
+
+.quiz-options:has([data-correct="true"]:checked)~.question-explanation-container .question-explanation-correct {
+    display: block;
+}
+
+.quiz-options:has(:checked):not(:has([data-correct="true"]:checked))~.question-explanation-container .question-explanation-wrong {
+    display: block;
+}
+
+.quiz-question:has(.quiz-options :checked) .question-explanation-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* JS ENHANCEMENT */
 .quiz-card {
     grid-area: 1/1;
     width: 18em;
@@ -67,28 +156,4 @@
     cursor: grabbing;
     transition: 0s;
     translate: calc(var(--delta-x, 0) * 1px) calc(var(--delta-y, 0) * 1px);
-}
-
-.question-explanation-container {
-    margin-top: 1em;
-    position: relative;
-    padding-top: 1em;
-}
-
-.quiz-options:has([data-correct="true"]:checked)~.question-explanation-container .question-explanation-correct {
-    display: block;
-}
-
-.quiz-options:has(:checked):not(:has([data-correct="true"]:checked))~.question-explanation-container .question-explanation-wrong {
-    display: block;
-}
-
-.quiz-question:has(.quiz-options :checked) .question-explanation-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 33%;
-    height: 1px;
-    background-color: red;
 }

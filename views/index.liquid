@@ -19,6 +19,7 @@
                     <input type="radio" name="question-{{ quizQuestion.id }}" value="{{ option.key }}" {% if
                         option.is_correct %}data-correct="true" {% endif %}>
                     {{ option.key }}. {{ option.answer }}
+                    <span class="option-indicator" hidden></span>
                 </label>
                 {% endfor %}
             </fieldset>
