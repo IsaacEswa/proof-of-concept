@@ -4,7 +4,7 @@
     overflow-x: clip;
 }
 
-card {
+.quiz-card {
     grid-area: 1/1;
     width: 18em;
     height: 30em;
@@ -21,24 +21,24 @@ card {
 
 }
 
-card:nth-child(1 of :not(.gone)) {
+.quiz-card:nth-child(1 of :not(.gone)) {
     rotate: 0deg;
     /* filter: brightness(1) grayscale(0); */
     interactivity: auto;
 }
 
-card:nth-child(2 of :not(.gone)) {
+.quiz-card:nth-child(2 of :not(.gone)) {
     rotate: 4deg;
     /* filter: brightness(1.1) grayscale(.33); */
 }
 
-card:not(.gone) {
+.quiz-card:not(.gone) {
     rotate: 8deg;
     /* filter: brightness(1.2) grayscale(.67); */
     interactivity: inert;
 }
 
-card {
+.quiz-card {
     transition:
         opacity .5s .5s,
         translate 1s,
@@ -59,12 +59,36 @@ card {
     }
 }
 
-card:hover {
+.quiz-card:hover {
     cursor: grab;
 }
 
-card.dragging {
+.quiz-card.dragging {
     cursor: grabbing;
     transition: 0s;
     translate: calc(var(--delta-x, 0) * 1px) calc(var(--delta-y, 0) * 1px);
+}
+
+.question-explanation-container {
+    margin-top: 1em;
+    position: relative;
+    padding-top: 1em;
+}
+
+.quiz-options:has([data-correct="true"]:checked)~.question-explanation-container .question-explanation-correct {
+    display: block;
+}
+
+.quiz-options:has(:checked):not(:has([data-correct="true"]:checked))~.question-explanation-container .question-explanation-wrong {
+    display: block;
+}
+
+.quiz-question:has(.quiz-options :checked) .question-explanation-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33%;
+    height: 1px;
+    background-color: red;
 }
