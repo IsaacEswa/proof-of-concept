@@ -1,23 +1,20 @@
-// NEW JS ENHANCEMENT CODE
 const component = document.querySelector('.quiz-component');
 component.classList.add('cards-stacked');
 component.querySelectorAll('.single-quiz-question').forEach(q => q.classList.add('stacked'));
 
-// 1. Hulpfunctie: geef de bovenste card
 const topCard = () => component.querySelector('.stacked:not(.gone)');
 
-// 2. Dismiss een card in een richting
 function dismissCard(card, direction) {
     card.classList.replace('dragging', direction) || card.classList.add(direction);
     card.classList.add('gone');
 }
 
-// 3. Drag-logica per card
 component.querySelectorAll('.stacked').forEach(card => {
     let x0, y0;
 
     card.addEventListener('pointerdown', e => {
         if (e.target.closest('input, label') || card !== topCard()) return;
+        if (!card.querySelector('[data-correct="true"]:checked')) return;
         card.setPointerCapture(e.pointerId);
         card.classList.add('dragging');
         [x0, y0] = [e.clientX, e.clientY];
