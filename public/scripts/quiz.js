@@ -1,51 +1,42 @@
-// const buttons = document.querySelectorAll("button");
-// buttons.forEach(button => {
-//     button.addEventListener("click", moveCard)
-// })
+// NEW JS ENHANCEMENT CODE
+const component = document.querySelector('.quiz-component');
+component.classList.add('cards-stacked');
+component.querySelectorAll('.single-quiz-question').forEach(q => q.classList.add('stacked'));
 
-// function moveCard() {
-//     const card = this.closest("card")
-//     if (Math.random() > .5) {
-//         card.classList.add("gone", "right")
-//     } else {
-//         card.classList.add("gone", "left")
-//     }
-// }
+// 1. Hulpfunctie: geef de bovenste card
+const topCard = () => component.querySelector('.stacked:not(.gone)');
 
-// const cards = document.querySelectorAll("card");
-// cards.forEach(card => {
-//     let cursorXpostionAtDragStart  // ← fixed: was mismatched with let pointerX...
-//     let cursorYpostionAtDragStart  // ← fixed: was mismatched with let pointerY...
+// 2. Dismiss een card in een richting
+function dismissCard(card, direction) {
+    card.classList.replace('dragging', direction) || card.classList.add(direction);
+    card.classList.add('gone');
+}
 
-//     card.addEventListener("pointerdown", startDragCard)
-//     card.addEventListener("pointermove", dragCard)
-//     card.addEventListener("pointerup", endDragCard)
+// 3. Drag-logica per card
+component.querySelectorAll('.stacked').forEach(card => {
+    let x0, y0;
 
-//     function startDragCard(event) {  // ← fixed: event as parameter
-//         card.classList.add("dragging")
-//         cursorXpostionAtDragStart = event.clientX
-//         cursorYpostionAtDragStart = event.clientY
-//         card.style.setProperty("--delta-x", 0)
-//         card.style.setProperty("--delta-y", 0)
-//     }
+    card.addEventListener('pointerdown', e => {
+        if (e.target.closest('input, label') || card !== topCard()) return;
+        card.setPointerCapture(e.pointerId);
+        card.classList.add('dragging');
+        [x0, y0] = [e.clientX, e.clientY];
+        card.style.setProperty('--delta-x', 0);
+        card.style.setProperty('--delta-y', 0);
+    });
 
-//     function dragCard(event) {  // ← fixed: event as parameter
-//         if (card.classList.contains("dragging")) {
-//             let deltaX = event.clientX - cursorXpostionAtDragStart
-//             let deltaY = event.clientY - cursorYpostionAtDragStart
-//             card.style.setProperty("--delta-x", deltaX)
-//             card.style.setProperty("--delta-y", deltaY)
-//             if (deltaX > 100) {
-//                 card.classList.remove("dragging")
-//                 card.classList.add("gone", "right")
-//             } else if (deltaX < -100) {
-//                 card.classList.remove("dragging")
-//                 card.classList.add("gone", "left")
-//             }
-//         }
-//     }
+    card.addEventListener('pointermove', e => {
+        if (!card.classList.contains('dragging')) return;
+        const dx = e.clientX - x0;
+        card.style.setProperty('--delta-x', dx);
+        card.style.setProperty('--delta-y', e.clientY - y0);
+        if (Math.abs(dx) > 100) dismissCard(card, dx > 0 ? 'right' : 'left');
+    });
 
-//     function endDragCard() {
-//         card.classList.remove("dragging")
-//     }
-// })
+    card.addEventListener('pointerup', () => {
+        if (!card.classList.contains('dragging')) return;
+        card.classList.remove('dragging');
+        card.style.setProperty('--delta-x', 0);
+        card.style.setProperty('--delta-y', 0);
+    });
+});

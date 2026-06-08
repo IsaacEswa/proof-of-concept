@@ -8,9 +8,10 @@
 
 
 <section class="quiz">
+    <h2>Quiz</h2>
     <div class="quiz-component">
         {% for quizQuestion in quizQuestions %}
-        <div class="quiz-question">
+        <article class="single-quiz-question">
             <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span>
             <h2>{{ quizQuestion.question }}</h2>
             <fieldset class="quiz-options">
@@ -23,15 +24,47 @@
                 </label>
                 {% endfor %}
             </fieldset>
-
-            {% comment %} <button type="submit">Bevestigen</button> {% endcomment %}
-
             <div class="question-explanation-container">
-                {% comment %} <h3>Korte uitleg:</h3> {% endcomment %}
                 <p class="question-explanation-correct" hidden>{{ quizQuestion.explanation_correct }}</p>
                 <p class="question-explanation-wrong" hidden>{{ quizQuestion.explanation_wrong }}</p>
             </div>
-        </div>
+        </article>
+        {% comment %} <article class="single-quiz-question">
+            <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span>
+            <h2>{{ quizQuestion.question }}</h2>
+            <fieldset class="quiz-options">
+                {% for option in quizQuestion.options %}
+                <label class="quiz-option">
+                    <input type="radio" name="question-{{ quizQuestion.id }}" value="{{ option.key }}" {% if
+                        option.is_correct %}data-correct="true" {% endif %}>
+                    {{ option.key }}. {{ option.answer }}
+                    <span class="option-indicator" hidden></span>
+                </label>
+                {% endfor %}
+            </fieldset>
+            <div class="question-explanation-container">
+                <p class="question-explanation-correct" hidden>{{ quizQuestion.explanation_correct }}</p>
+                <p class="question-explanation-wrong" hidden>{{ quizQuestion.explanation_wrong }}</p>
+            </div>
+        </article>
+        <article class="single-quiz-question">
+            <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span>
+            <h2>{{ quizQuestion.question }}</h2>
+            <fieldset class="quiz-options">
+                {% for option in quizQuestion.options %}
+                <label class="quiz-option">
+                    <input type="radio" name="question-{{ quizQuestion.id }}" value="{{ option.key }}" {% if
+                        option.is_correct %}data-correct="true" {% endif %}>
+                    {{ option.key }}. {{ option.answer }}
+                    <span class="option-indicator" hidden></span>
+                </label>
+                {% endfor %}
+            </fieldset>
+            <div class="question-explanation-container">
+                <p class="question-explanation-correct" hidden>{{ quizQuestion.explanation_correct }}</p>
+                <p class="question-explanation-wrong" hidden>{{ quizQuestion.explanation_wrong }}</p>
+            </div>
+        </article> {% endcomment %}
         {% endfor %}
     </div>
 </section>
@@ -39,7 +72,8 @@
 {% render 'partials/foot.liquid' %}
 
 {% comment %} VERSION 01
-<card class="quiz-card" data-question-id="{{ quizQuestion.id }}">
+{% for quizQuestion in quizQuestions %}
+<article class="quiz-card" data-question-id="{{ quizQuestion.id }}">
     <button class="back-btn" aria-label="Vorige vraag">Vorige vraag</button>
     <span class="question-progress">Vraag {{ quizQuestion.id }}/{{ quizQuestions.size }}</span>
     <h2>{{ quizQuestion.question }}</h2>
@@ -57,4 +91,5 @@
         <p class="question-explanation-wrong">{{ quizQuestion.explanation_wrong }}</p>
     </div>
     <button class="next-btn">Volgende</button>
-</card> {% endcomment %}
+</article>
+{% endfor %}{% endcomment %}
