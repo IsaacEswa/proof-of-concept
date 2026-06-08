@@ -98,7 +98,7 @@
 .stacked {
     grid-area: 1/1;
     width: 20em;
-    height: auto;
+    /* height: auto; */
     min-height: 35em;
     padding: 2em;
     border: 1px solid var(--primary-color);
@@ -108,25 +108,30 @@
     z-index: calc(sibling-count() - sibling-index());
 
     @media (min-width: 768px) {
-        width: 30em;
-        height: 18em;
+        min-width: 35em;
+        height: 20em;
     }
 
+    @media (min-width: 1024px) {
+        min-width: 50em;
+    }
 }
 
 .stacked:nth-child(1 of :not(.gone)) {
     rotate: 0deg;
     interactivity: auto;
-
+    opacity: 1;
 }
 
 .stacked:nth-child(2 of :not(.gone)) {
     rotate: 4deg;
+    opacity: .5;
 }
 
 .stacked:not(.gone) {
     rotate: 8deg;
     interactivity: inert;
+    opacity: .1;
 }
 
 .stacked {
@@ -134,7 +139,7 @@
     /* padding: 2em 4em; */
 
     transition:
-        opacity .5s .5s,
+        opacity .5s,
         translate 1s,
         rotate 1s .125s;
 
