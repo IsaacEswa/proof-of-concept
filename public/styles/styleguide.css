@@ -29,7 +29,11 @@ h1,
 h2,
 h3 {
     font-family: "Bitter", serif;
-    font-weight: 600;
+}
+
+h3 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+
 }
 
 section {

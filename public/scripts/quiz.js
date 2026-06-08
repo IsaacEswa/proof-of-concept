@@ -12,6 +12,14 @@ function dismissCard(card, direction) {
 component.querySelectorAll('.stacked').forEach(card => {
     let x0, y0;
 
+    card.addEventListener('keydown', e => {
+        if (e.key !== 'Enter') return;
+        if (!card.querySelector('[data-correct="true"]:checked')) return;
+        if (card !== topCard()) return;
+        dismissCard(card, 'right');
+    });
+
+
     card.addEventListener('pointerdown', e => {
         if (e.target.closest('input, label') || card !== topCard()) return;
         if (!card.querySelector('[data-correct="true"]:checked')) return;
