@@ -1,5 +1,35 @@
 <div class="quiz-component">
     {% for quizQuestion in quizQuestions %}
+    <article class="single-quiz-question">
+        <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span>
+
+        <h3>{{ quizQuestion.question }}</h3>
+
+        <form class="question-answer-form" action="/quiz/{{ quizQuestion.id }}/answer" method="post">
+            <input type="hidden" name="questionId" value="{{ quizQuestion.id }}">
+
+            <fieldset class="quiz-options">
+                {% for option in quizQuestion.options %}
+                <label class="quiz-option">
+
+                    <input type="radio" name="answer" value="{{ option.key }}">
+                    {{ option.key }}. {{ option.answer }}
+
+                </label>
+                {% endfor %}
+            </fieldset>
+
+            <button class="primary-button quiz-btn" type="submit">Controleren</button>
+
+        </form>
+
+    </article>
+    {% endfor %}
+</div>
+
+{% comment %} ORIGINAL
+<div class="quiz-component">
+    {% for quizQuestion in quizQuestions %}
     <article class="single-quiz-question" tabindex="0">
         <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span>
         <h3>{{ quizQuestion.question }}</h3>
@@ -19,4 +49,4 @@
         </div>
     </article>
     {% endfor %}
-</div>
+</div>{% endcomment %}

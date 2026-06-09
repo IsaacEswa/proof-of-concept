@@ -29,11 +29,11 @@
     display: none;
 }
 
-.single-quiz-question:has([data-correct="true"]:checked)+.single-quiz-question {
+/* .single-quiz-question:has([data-correct="true"]:checked)+.single-quiz-question {
     display: flex;
-}
+} */
 
-.single-quiz-question::after {
+/* .single-quiz-question::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -43,7 +43,7 @@
     height: 1px;
     background-color: var(--primary-color);
     margin: auto;
-}
+} */
 
 .question-progress {
     text-transform: uppercase;
@@ -66,52 +66,51 @@
     }
 }
 
-.quiz-option input[type="radio"] {
+/* .quiz-option input[type="radio"] {
     appearance: none;
-}
+} */
 
 .quiz-option:has(input:focus-visible) {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
 
-.quiz-option:has([data-correct="true"]:checked) {
+/* .quiz-option:has([data-correct="true"]:checked) {
     background-color: var(--secondary-color);
-}
+} */
 
-.single-quiz-question:has(:checked):not(:has([data-correct="true"]:checked)) .quiz-option:has(:checked) {
+/* .single-quiz-question:has(:checked):not(:has([data-correct="true"]:checked)) .quiz-option:has(:checked) {
     background-color: #e06868
-}
+} */
 
-.quiz-option:has([data-correct="true"]:checked) .option-indicator {
+/* .quiz-option:has([data-correct="true"]:checked) .option-indicator {
     display: block;
     padding-left: .5em;
 
     &::after {
         content: "✓";
     }
-}
+} */
 
-.single-quiz-question:has(:checked):not(:has([data-correct="true"]:checked)) .quiz-option:has(:checked) .option-indicator {
+/* .single-quiz-question:has(:checked):not(:has([data-correct="true"]:checked)) .quiz-option:has(:checked) .option-indicator {
     display: block;
     padding-left: .5em;
 
     &::after {
         content: "✗";
     }
-}
+} */
 
-.quiz-options:has([data-correct="true"]:checked)~.question-explanation-container .question-explanation-correct,
+/* .quiz-options:has([data-correct="true"]:checked)~.question-explanation-container .question-explanation-correct,
 .quiz-options:has(:checked):not(:has([data-correct="true"]:checked))~.question-explanation-container .question-explanation-wrong {
     display: block;
     font-style: italic;
-}
+} */
 
-/* JS ENHANCEMENT */
+/* JS ENHANCEMENT 
 .stacked {
     grid-area: 1/1;
     width: 20em;
-    /* height: auto; */
     min-height: 35em;
     padding: 2em;
     border: 1px solid var(--primary-color);
@@ -184,8 +183,6 @@
     translate: calc(var(--delta-x, 0) * 1px) calc(var(--delta-y, 0) * 1px);
 }
 
-
-
 .quiz-component.cards-stacked .single-quiz-question::after {
     display: none;
 }
@@ -198,4 +195,4 @@
 
 .quiz-component.cards-stacked .single-quiz-question:not(:first-child) {
     display: flex;
-}
+}*/

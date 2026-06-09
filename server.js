@@ -11,7 +11,10 @@ app.set('views', './views')
 // https://fdnd-agency.directus.app/items/teylers_museum_exhibits/1 | Topstuk
 // https://fdnd-agency.directus.app/items/teylers_museum_exhibits_sections | Timeline items
 // https://fdnd-agency.directus.app/items/teylers_museum_persons | Creators
+
 // https://fdnd-agency.directus.app/items/teylers_museum_quiz_questions | Quiz questions
+// https://fdnd-agency.directus.app/items/teylers_museum_quiz_attempts | Quiz attemps
+// https://fdnd-agency.directus.app/items/teylers_museum_quiz_answers| Quiz answers
 
 const baseURL = 'https://fdnd-agency.directus.app/items/teylers_museum_'
 const timelineItem_fields = 'title, id, slug, exhibit, cover.*, content_blocks, start_year, end_year, era, summary'
@@ -34,6 +37,20 @@ app.get('/', async function (request, response) {
         timelineItems: timelineDataResponseJSON.data,
         quizQuestions: quizQuestionsResponseJSON.data
     })
+})
+
+app.post('/quiz/answer', async function (request, response) {
+    await fetch(baseURL + 'quiz_answers', {
+        method: 'POST',
+
+        body: JSON.stringify({
+
+        }),
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        }
+    });
+    response.redirect(303);
 })
 
 app.use((req, res, next) => {
