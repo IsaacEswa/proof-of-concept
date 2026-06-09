@@ -1,36 +1,16 @@
 {% render 'partials/head.liquid' %}
 
-<section class="timeline" hidden>
-    {% comment %} <h2 class="section-title">Timeline van de Grote Elektriseermachine</h2> {% endcomment %}
+<section class="timeline">
+    {% comment %} <h2 class="section-title">Timeline</h2> {% endcomment %}
     {% render 'partials/timeline-component.liquid', timelineItems: timelineItems %}
 
 </section>
 
 
 <section class="quiz">
-    <h2>Quiz</h2>
-    <div class="quiz-component">
-        {% for quizQuestion in quizQuestions %}
-        <article class="single-quiz-question" tabindex="0">
-            <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span>
-            <h3>{{ quizQuestion.question }}</h3>
-            <fieldset class="quiz-options">
-                {% for option in quizQuestion.options %}
-                <label class="quiz-option">
-                    <input type="radio" name="question-{{ quizQuestion.id }}" value="{{ option.key }}" {% if
-                        option.is_correct %}data-correct="true" {% endif %}>
-                    {{ option.key }}. {{ option.answer }}
-                    <span class="option-indicator" hidden></span>
-                </label>
-                {% endfor %}
-            </fieldset>
-            <div class="question-explanation-container">
-                <p class="question-explanation-correct" hidden>{{ quizQuestion.explanation_correct }}</p>
-                <p class="question-explanation-wrong" hidden>{{ quizQuestion.explanation_wrong }}</p>
-            </div>
-        </article>
-        {% endfor %}
-    </div>
+    {% comment %} <h2>Quiz</h2> {% endcomment %}
+    {% render 'partials/quiz-component.liquid', quizQuestions: quizQuestions %}
+
 </section>
 
 {% render 'partials/foot.liquid' %}
