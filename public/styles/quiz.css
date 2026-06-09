@@ -80,7 +80,7 @@
 }
 
 .single-quiz-question:has(:checked):not(:has([data-correct="true"]:checked)) .quiz-option:has(:checked) {
-    background-color: rgb(224, 104, 104);
+    background-color: #e06868
 }
 
 .quiz-option:has([data-correct="true"]:checked) .option-indicator {
