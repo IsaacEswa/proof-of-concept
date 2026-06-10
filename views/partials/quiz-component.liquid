@@ -1,21 +1,29 @@
 <div class="quiz-component">
-    {% for quizQuestion in quizQuestions %}
+
+    {% for section in sections %}
     <article class="single-quiz-question">
 
         <form class="question-answer-form" action="/" method="post">
-            <input type="hidden" name="questionId" value="{{ quizQuestion.id }}">
+            <input type="hidden" name="questionId" value="{{ section.questions[0].id }}">
 
             <fieldset class="quiz-options">
                 <legend>
-                    <small class="question-progress"> Vraag {{ forloop.index }}/{{ quizQuestions.size }}</small>
-                    {{ quizQuestion.question }}
+                    <small class="question-progress">
+                        Vraag {{ forloop.index }}/{{ sections.size }}
+                    </small>
+
+                    {% for question in section.questions %}
+                    <h3>{{ question.question }}</h3>
+                    {% endfor %}
                 </legend>
 
-                {% for option in quizQuestion.options %}
+                {% for question in section.questions %}
+                {% for option in question.options %}
                 <label class="quiz-option">
-                    <input type="radio" name="answer" value="{{ option.key }}">
+                    <input type="radio" name="answerKey" value="{{ option.key }}" required>
                     {{ option.key }}. {{ option.answer }}
                 </label>
+                {% endfor %}
                 {% endfor %}
             </fieldset>
 
@@ -30,23 +38,23 @@
 
 {% comment %} ORIGINAL
 <div class="quiz-component">
-    {% for quizQuestion in quizQuestions %}
+    {% for section in sections %}
     <article class="single-quiz-question" tabindex="0">
-        <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span>
-        <h3>{{ quizQuestion.question }}</h3>
+        <span class="question-progress">Vraag {{ forloop.index }}/{{ sections.size }}</span>
+        <h3>{{ section.question }}</h3>
         <fieldset class="quiz-options">
-            {% for option in quizQuestion.options %}
+            {% for option in section.options %}
             <label class="quiz-option">
-                <input type="radio" name="question-{{ quizQuestion.id }}" value="{{ option.key }}" {% if
-                    option.is_correct %}data-correct="true" {% endif %}>
+                <input type="radio" name="question-{{ section.id }}" value="{{ option.key }}" {% if option.is_correct
+                    %}data-correct="true" {% endif %}>
                 {{ option.key }}. {{ option.answer }}
                 <span class="option-indicator" hidden></span>
             </label>
             {% endfor %}
         </fieldset>
         <div class="question-explanation-container">
-            <p class="question-explanation-correct" hidden>{{ quizQuestion.explanation_correct }}</p>
-            <p class="question-explanation-wrong" hidden>{{ quizQuestion.explanation_wrong }}</p>
+            <p class="question-explanation-correct" hidden>{{ section.explanation_correct }}</p>
+            <p class="question-explanation-wrong" hidden>{{ section.explanation_wrong }}</p>
         </div>
     </article>
     {% endfor %}

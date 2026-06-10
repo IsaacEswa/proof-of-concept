@@ -1,27 +1,27 @@
 <div class="timeline-component">
 
-    {% for timelineItem in timelineItems %}
+    {% for section in sections %}
     <div class="timeline-item">
 
-        <time class="timeline-year" datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
+        <time class="timeline-year" datetime="{{ section.start_year }}">{{ section.start_year }}</time>
         <article class="timeline-article">
             <div class="timeline-article-content">
-                <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
-                <h3 class="timeline-title">{{ timelineItem.title }}</h3>
-                <p class="timeline-summary">{{ timelineItem.summary }}</p>
+                <time datetime="{{ section.start_year }}">{{ section.start_year }}</time>
+                <h3 class="timeline-title">{{ section.title }}</h3>
+                <p class="timeline-summary">{{ section.summary }}</p>
             </div>
 
             <div class="timeline-article-image">
-                {% if timelineItem.cover %}
+                {% if section.cover %}
                 <picture>
                     <source type="image/avif"
-                        srcset="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?fit=cover&format=avif&height=700&quality=80">
+                        srcset="https://fdnd-agency.directus.app/assets/{{ section.cover }}?fit=cover&format=avif&height=700&quality=80">
 
                     <source type="image/webp"
-                        srcset="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?fit=cover&format=webp&height=700&quality=80">
+                        srcset="https://fdnd-agency.directus.app/assets/{{ section.cover }}?fit=cover&format=webp&height=700&quality=80">
 
-                    <img src="https://fdnd-agency.directus.app/assets/{{ timelineItem.cover.id }}?height=700&quality=80"
-                        width="{{ timelineItem.cover.width }}" height="{{ timelineItem.cover.height }}" alt="">
+                    <img src="https://fdnd-agency.directus.app/assets/{{ section.cover }}?height=700&quality=80"
+                        width="{{ section.cover.width }}" height="{{ section.cover.height }}" alt="">
                 </picture>
                 {% else %}
                 <img src="/assets/placeholder.jpg" alt="Geen afbeelding beschikbaar">
