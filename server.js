@@ -43,6 +43,9 @@ const timelineItem_fields = 'title, id, slug, exhibit, cover.*, content_blocks, 
 // })
 
 app.get('/', async function (request, response) {
+    const answered = request.query.answered
+    const correct = request.query.correct
+
     const sectionParams = new URLSearchParams()
     sectionParams.set(
         'fields',
@@ -57,10 +60,15 @@ app.get('/', async function (request, response) {
 
     // console.log(sectionsJSON)
     // console.dir(sectionsJSON, { depth: null })
+    console.log(request.query)
 
-    response.render('index.liquid', {
-        sections: sectionsJSON.data
-    })
+    const sections = {
+        sections: sectionsJSON.data,
+        answered: request.query.answered,
+        correct: request.query.correct,
+    }
+
+    response.render('index.liquid', sections)
 })
 
 // app.post('/', async function (request, response) {
@@ -78,6 +86,8 @@ app.get('/', async function (request, response) {
 // })
 app.post('/quiz/answer', async (request, response) => {
     console.log('POST /quiz/answer hit!')
+    console.log(request.query)
+
 
     const { questionId, answerKey } = request.body
 
@@ -102,7 +112,8 @@ app.post('/quiz/answer', async (request, response) => {
         isCorrect
     })
 
-    // 2.2 (optioneel nu nog simpel)
+
+    // 2.2 fetchen en posten
     await fetch(baseURL + 'quiz_answers', {
         method: 'POST',
         headers: {
@@ -116,10 +127,15 @@ app.post('/quiz/answer', async (request, response) => {
         })
     })
 
+
+
     // 2.3 redirect terug
     response.redirect(
         '/?answered=' + questionId + '&correct=' + isCorrect
     )
+
+    console.log(request.query)
+
 })
 
 

@@ -32,6 +32,15 @@
             </button>
         </form>
 
+        <h3>Resultaat:</h3>
+        {% if answered %}
+        {% if correct == "true" %}
+        <p class="feedback feedback--correct">✅ Goed!</p>
+        {% else %}
+        <p class="feedback feedback--wrong">❌ Fout</p>
+        {% endif %}
+        {% endif %}
+
     </article>
     {% endfor %}
 </div>

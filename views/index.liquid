@@ -2,14 +2,17 @@
 
 <section class="timeline">
     {% comment %} <h2 class="section-title">Timeline</h2> {% endcomment %}
-    {% render 'partials/timeline-component.liquid', sections: sections %}
+    {% render 'partials/timeline-component.liquid', sections: sections, answered: answered, correct: correct %}
 
 </section>
 
 
 <section class="quiz">
     {% comment %} <h2>Quiz</h2> {% endcomment %}
-    {% render 'partials/quiz-component.liquid', sections: sections %}
+    {% render 'partials/quiz-component.liquid', sections: sections, answered: answered, correct: correct %}
+
+
+
 
 </section>
 
