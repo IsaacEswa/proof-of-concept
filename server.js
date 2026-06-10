@@ -87,10 +87,13 @@ app.post('/quiz/answer', async (request, response) => {
         body: JSON.stringify({
             attempt: 2, // tijdelijk hardcoded
             question: questionId,
-            answer_key: answerKey,
+            chosen_option: answerKey,
             correct: isCorrect
         })
     })
+
+    console.log(request.body)
+
 
 
 
