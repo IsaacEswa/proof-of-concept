@@ -19,23 +19,46 @@ app.set('views', './views')
 const baseURL = 'https://fdnd-agency.directus.app/items/teylers_museum_'
 const timelineItem_fields = 'title, id, slug, exhibit, cover.*, content_blocks, start_year, end_year, era, summary'
 
+
+// app.get('/', async function (request, response) {
+//     const timelineParams = new URLSearchParams()
+//     timelineParams.set('fields', timelineItem_fields)
+//     timelineParams.set('sort', 'start_year')
+
+//     const timelineDataResponse = await fetch(baseURL + 'exhibits_sections' + '?' + timelineParams.toString())
+//     const timelineDataResponseJSON = await timelineDataResponse.json()
+
+//     const quizParams = new URLSearchParams()
+//     // quizParams.set('sort', 'id')
+//     const quizQuestionsResponse = await fetch(baseURL + 'quiz_questions' + '?' + quizParams.toString())
+//     const quizQuestionsResponseJSON = await quizQuestionsResponse.json()
+
+//     console.log(quizQuestionsResponseJSON)
+
+//     response.render('index.liquid', {
+//         timelineItems: timelineDataResponseJSON.data,
+//         quizQuestions: quizQuestionsResponseJSON.data
+//     })
+// })
+
 app.get('/', async function (request, response) {
-    const timelineParams = new URLSearchParams()
-    timelineParams.set('fields', timelineItem_fields)
-    timelineParams.set('sort', 'start_year')
-    const timelineDataResponse = await fetch(baseURL + 'exhibits_sections' + '?' + timelineParams.toString())
-    const timelineDataResponseJSON = await timelineDataResponse.json()
+    const sectionParams = new URLSearchParams()
+    sectionParams.set(
+        'fields',
+        '*,questions.*,questions.options.*'
+    )
 
-    const quizParams = new URLSearchParams()
-    // quizParams.set('sort', 'id')
-    const quizQuestionsResponse = await fetch(baseURL + 'quiz_questions' + '?' + quizParams.toString())
-    const quizQuestionsResponseJSON = await quizQuestionsResponse.json()
+    const sectionsResponse = await fetch(
+        baseURL + 'exhibits_sections?' + sectionParams.toString()
+    )
 
-    console.log(quizQuestionsResponseJSON)
+    const sectionsJSON = await sectionsResponse.json()
+
+    // console.log(sectionsJSON)
+    console.dir(sectionsJSON, { depth: null })
 
     response.render('index.liquid', {
-        timelineItems: timelineDataResponseJSON.data,
-        quizQuestions: quizQuestionsResponseJSON.data
+        sections: sectionsJSON.data
     })
 })
 
