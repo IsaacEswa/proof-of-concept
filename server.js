@@ -88,11 +88,11 @@ app.post('/quiz/answer', async (request, response) => {
             attempt: 2, // tijdelijk hardcoded
             question: questionId,
             chosen_option: answerKey,
-            correct: isCorrect
+            is_correct: isCorrect
         })
     })
 
-    console.log(request.body)
+    // console.log(request.body)
 
 
 
