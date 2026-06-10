@@ -47,6 +47,7 @@
 
             @media (min-width: 768px) {
                 display: block;
+                padding-top: 5em;
             }
 
             .timeline-year {
