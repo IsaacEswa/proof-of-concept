@@ -1,26 +1,31 @@
 <div class="quiz-component">
     {% for quizQuestion in quizQuestions %}
     <article class="single-quiz-question">
-        <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span>
+        {% comment %} <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span> {%
+        endcomment %}
 
-        <h3>{{ quizQuestion.question }}</h3>
+        {% comment %} <h3>{{ quizQuestion.question }}</h3> {% endcomment %}
 
         <form class="question-answer-form" action="/" method="post">
             <input type="hidden" name="questionId" value="{{ quizQuestion.id }}">
 
             <fieldset class="quiz-options">
+                <legend>
+                    <small class="question-progress"> Vraag {{ forloop.index }}/{{ quizQuestions.size }}</small>
+                    {{ quizQuestion.question }}
+                </legend>
+
                 {% for option in quizQuestion.options %}
                 <label class="quiz-option">
-
                     <input type="radio" name="answer" value="{{ option.key }}">
                     {{ option.key }}. {{ option.answer }}
-
                 </label>
                 {% endfor %}
             </fieldset>
 
-            <button class="primary-button quiz-btn" type="submit">Controleren</button>
-
+            <button class="primary-button quiz-btn" type="submit">
+                Controleren
+            </button>
         </form>
 
     </article>

@@ -72,6 +72,10 @@
         flex-direction: row;
         align-items: center;
     }
+
+    small {
+        display: block;
+    }
 }
 
 .quiz-option input[type="radio"] {
