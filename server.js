@@ -88,7 +88,8 @@ app.post('/quiz/answer', async (request, response) => {
             attempt: 2, // tijdelijk hardcoded
             question: questionId,
             chosen_option: answerKey,
-            is_correct: isCorrect
+            is_correct: isCorrect,
+            answered_at: new Date().toISOString(),
         })
     })
 
