@@ -20,9 +20,17 @@
     gap: 1em;
     padding-bottom: 1.5em;
     background-color: var(--tertiary-color);
-
-
     position: relative;
+
+    .question-answer-form {
+
+        .quiz-btn {
+            margin-top: 3em;
+            float: right;
+            /* cursor: pointer; */
+
+        }
+    }
 }
 
 .single-quiz-question:not(:first-child) {
@@ -66,9 +74,13 @@
     }
 }
 
-/* .quiz-option input[type="radio"] {
+.quiz-option input[type="radio"] {
     appearance: none;
-} */
+}
+
+.quiz-option:has(input:checked) {
+    background-color: var(--secondary-color);
+}
 
 .quiz-option:has(input:focus-visible) {
     outline: 2px solid var(--primary-color);

@@ -5,7 +5,7 @@
 
         <h3>{{ quizQuestion.question }}</h3>
 
-        <form class="question-answer-form" action="/quiz/{{ quizQuestion.id }}/answer" method="post">
+        <form class="question-answer-form" action="/" method="post">
             <input type="hidden" name="questionId" value="{{ quizQuestion.id }}">
 
             <fieldset class="quiz-options">

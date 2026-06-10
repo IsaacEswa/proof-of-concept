@@ -47,3 +47,11 @@ section {
 fieldset {
     border: none;
 }
+
+.primary-button {
+    padding: .5em 1.2em;
+    background-color: var(--secondary-color);
+    color: black;
+    border: none;
+    /* cursor: pointer; */
+}

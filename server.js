@@ -39,7 +39,7 @@ app.get('/', async function (request, response) {
     })
 })
 
-app.post('/quiz/answer', async function (request, response) {
+app.post('/', async function (request, response) {
     await fetch(baseURL + 'quiz_answers', {
         method: 'POST',
 
@@ -50,7 +50,7 @@ app.post('/quiz/answer', async function (request, response) {
             'Content-Type': 'application/json;charset=UTF-8'
         }
     });
-    response.redirect(303);
+    response.redirect(303, '/');
 })
 
 app.use((req, res, next) => {
