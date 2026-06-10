@@ -18,29 +18,7 @@ app.set('views', './views')
 // https://fdnd-agency.directus.app/items/teylers_museum_quiz_answers| Quiz answers
 
 const baseURL = 'https://fdnd-agency.directus.app/items/teylers_museum_'
-const timelineItem_fields = 'title, id, slug, exhibit, cover.*, content_blocks, start_year, end_year, era, summary'
-
-
-// app.get('/', async function (request, response) {
-//     const timelineParams = new URLSearchParams()
-//     timelineParams.set('fields', timelineItem_fields)
-//     timelineParams.set('sort', 'start_year')
-
-//     const timelineDataResponse = await fetch(baseURL + 'exhibits_sections' + '?' + timelineParams.toString())
-//     const timelineDataResponseJSON = await timelineDataResponse.json()
-
-//     const quizParams = new URLSearchParams()
-//     // quizParams.set('sort', 'id')
-//     const quizQuestionsResponse = await fetch(baseURL + 'quiz_questions' + '?' + quizParams.toString())
-//     const quizQuestionsResponseJSON = await quizQuestionsResponse.json()
-
-//     console.log(quizQuestionsResponseJSON)
-
-//     response.render('index.liquid', {
-//         timelineItems: timelineDataResponseJSON.data,
-//         quizQuestions: quizQuestionsResponseJSON.data
-//     })
-// })
+// const timelineItem_fields = 'title, id, slug, exhibit, cover.*, content_blocks, start_year, end_year, era, summary'
 
 app.get('/', async function (request, response) {
     const answered = request.query.answered
@@ -60,7 +38,7 @@ app.get('/', async function (request, response) {
 
     // console.log(sectionsJSON)
     // console.dir(sectionsJSON, { depth: null })
-    console.log(request.query)
+    // console.log(request.query)
 
     const sections = {
         sections: sectionsJSON.data,
@@ -71,22 +49,9 @@ app.get('/', async function (request, response) {
     response.render('index.liquid', sections)
 })
 
-// app.post('/', async function (request, response) {
-//     await fetch(baseURL + 'quiz_answers', {
-//         method: 'POST',
-
-//         body: JSON.stringify({
-
-//         }),
-//         headers: {
-//             'Content-Type': 'application/json;charset=UTF-8'
-//         }
-//     });
-//     response.redirect(303, '/');
-// })
 app.post('/quiz/answer', async (request, response) => {
-    console.log('POST /quiz/answer hit!')
-    console.log(request.query)
+    // console.log('POST /quiz/answer hit!')
+    // console.log(request.body)
 
 
     const { questionId, answerKey } = request.body
@@ -106,11 +71,11 @@ app.post('/quiz/answer', async (request, response) => {
 
     const isCorrect = selectedOption?.is_correct === true
 
-    console.log({
-        questionId,
-        answerKey,
-        isCorrect
-    })
+    // console.log({
+    //     questionId,
+    //     answerKey,
+    //     isCorrect
+    // })
 
 
     // 2.2 fetchen en posten
@@ -120,7 +85,7 @@ app.post('/quiz/answer', async (request, response) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            attempt: 1, // tijdelijk hardcoded
+            attempt: 2, // tijdelijk hardcoded
             question: questionId,
             answer_key: answerKey,
             correct: isCorrect
@@ -134,7 +99,7 @@ app.post('/quiz/answer', async (request, response) => {
         '/?answered=' + questionId + '&correct=' + isCorrect
     )
 
-    console.log(request.query)
+    // console.log(request.query)
 
 })
 
