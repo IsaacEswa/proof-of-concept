@@ -1,10 +1,6 @@
 <div class="quiz-component">
     {% for quizQuestion in quizQuestions %}
     <article class="single-quiz-question">
-        {% comment %} <span class="question-progress">Vraag {{ forloop.index }}/{{ quizQuestions.size }}</span> {%
-        endcomment %}
-
-        {% comment %} <h3>{{ quizQuestion.question }}</h3> {% endcomment %}
 
         <form class="question-answer-form" action="/" method="post">
             <input type="hidden" name="questionId" value="{{ quizQuestion.id }}">
