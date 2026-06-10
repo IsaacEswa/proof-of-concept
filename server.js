@@ -100,7 +100,7 @@ app.post('/quiz/answer', async (request, response) => {
 
     // 2.3 redirect terug
     response.redirect(
-        '/?answered=' + questionId + '&correct=' + isCorrect
+        '/?question=' + questionId + '&correct=' + isCorrect
     )
 
     // console.log(request.query)
