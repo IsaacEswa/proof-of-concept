@@ -2,6 +2,7 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 const app = express()
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(express.static('public'))
 const engine = new Liquid();
 app.engine('liquid', engine.express());
@@ -55,26 +56,73 @@ app.get('/', async function (request, response) {
     const sectionsJSON = await sectionsResponse.json()
 
     // console.log(sectionsJSON)
-    console.dir(sectionsJSON, { depth: null })
+    // console.dir(sectionsJSON, { depth: null })
 
     response.render('index.liquid', {
         sections: sectionsJSON.data
     })
 })
 
-app.post('/', async function (request, response) {
+// app.post('/', async function (request, response) {
+//     await fetch(baseURL + 'quiz_answers', {
+//         method: 'POST',
+
+//         body: JSON.stringify({
+
+//         }),
+//         headers: {
+//             'Content-Type': 'application/json;charset=UTF-8'
+//         }
+//     });
+//     response.redirect(303, '/');
+// })
+app.post('/quiz/answer', async (request, response) => {
+    console.log('POST /quiz/answer hit!')
+
+    const { questionId, answerKey } = request.body
+
+    // 2.1 haal vraag opnieuw op
+    const questionResponse = await fetch(
+        `${baseURL}quiz_questions/${questionId}?fields=*,options.*`
+        // BIJV: https://fdnd-agency.directus.app/items/teylers_museum_quiz_questions/1?fields=*,options.*
+    )
+
+    const questionJSON = await questionResponse.json()
+
+    // check antwoord
+    const selectedOption = questionJSON.data.options.find(
+        option => option.key === answerKey
+    )
+
+    const isCorrect = selectedOption?.is_correct === true
+
+    console.log({
+        questionId,
+        answerKey,
+        isCorrect
+    })
+
+    // 2.2 (optioneel nu nog simpel)
     await fetch(baseURL + 'quiz_answers', {
         method: 'POST',
-
-        body: JSON.stringify({
-
-        }),
         headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-        }
-    });
-    response.redirect(303, '/');
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            attempt: 1, // tijdelijk hardcoded
+            question: questionId,
+            answer_key: answerKey,
+            correct: isCorrect
+        })
+    })
+
+    // 2.3 redirect terug
+    response.redirect(
+        '/?answered=' + questionId + '&correct=' + isCorrect
+    )
 })
+
+
 
 
 app.use((req, res, next) => {

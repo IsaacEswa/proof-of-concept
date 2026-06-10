@@ -3,7 +3,7 @@
     {% for section in sections %}
     <article class="single-quiz-question">
 
-        <form class="question-answer-form" action="/" method="post">
+        <form class="question-answer-form" action="/quiz/answer" method="post">
             <input type="hidden" name="questionId" value="{{ section.questions[0].id }}">
 
             <fieldset class="quiz-options">
