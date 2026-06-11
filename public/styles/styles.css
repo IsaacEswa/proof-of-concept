@@ -1,3 +1,68 @@
+#sidebar:target {
+    /* Als JS niet werkt gebruikt het gewoon deze CSS */
+    transform: translateX(0);
+}
+
+.menu-open {
+    transform: translateX(0);
+}
+
+#sidebar {
+    background-color: var(--tertiary-color);
+    width: max-content;
+    height: 100dvh;
+    z-index: 99;
+    position: absolute;
+
+    transform: translateX(-100%);
+    transition: .3s ease;
+
+    .closemenu-btn {
+        padding: 1em;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul {
+        /* padding: 0;
+        margin: 0; */
+
+        li {
+            list-style: none;
+            padding: 1em;
+            transition: .3s ease;
+
+            a {
+                text-decoration: none;
+                color: var(--primary-color);
+
+
+            }
+
+            &:hover {
+                background-color: var(--secondary-color);
+
+                /* a {
+                    color: var(--green);
+                } */
+            }
+        }
+    }
+}
+
+header {
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .header-logo img {
+            width: 100px;
+        }
+    }
+}
+
+
 .timeline {
     .timeline-component {
         position: relative;
