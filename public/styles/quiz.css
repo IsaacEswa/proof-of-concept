@@ -25,6 +25,9 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+
+        transition: .3s;
+
     }
 
     small.question-progress {
@@ -65,11 +68,16 @@
 
                 .quiz-option:has(input:checked) {
                     background-color: var(--secondary-color);
+
                 }
 
                 .quiz-option:has(input:focus-visible) {
                     outline: 2px solid var(--primary-color);
                     outline-offset: 2px;
+                }
+
+                .quiz-option:hover {
+                    scale: 0.97;
                 }
             }
         }

@@ -62,7 +62,7 @@ fieldset {
     transition: .2s;
 
     &:hover {
-        scale: 0.95;
+        scale: 0.97;
         background-color: #d6a700;
 
     }
