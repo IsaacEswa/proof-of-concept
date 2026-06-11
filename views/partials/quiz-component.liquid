@@ -1,10 +1,12 @@
 <div class="quiz-component">
 
     {% for section in sections %}
-    <article class="single-quiz-question {% unless forloop.first %}is-hidden{% endunless %}">
+    <article class="single-quiz-question {% if step != forloop.index0 %}is-hidden{% endif %}">
+        <p>DEBUG step: {{ step }}</p>
 
         <form class="question-answer-form" action="/quiz/answer" method="post">
             <input type="hidden" name="questionId" value="{{ section.questions[0].id }}">
+            <input type="hidden" name="step" value="{{ forloop.index0 }}">
 
             <fieldset class="quiz-options">
                 <legend>
@@ -32,12 +34,21 @@
             </button>
         </form>
 
+        <h3>Resultaat:</h3>
+        {% if answered %}
+        {% if correct == "true" %}
+        <p class="">✅ Goed!</p>
+        {% else %}
+        <p class="">❌ Fout</p>
+        {% endif %}
+        {% endif %}
+
     </article>
     {% endfor %}
 </div>
 
 {% comment %} ORIGINAL
-<div class="quiz-component">
+<div class=" quiz-component">
     {% for section in sections %}
     <article class="single-quiz-question" tabindex="0">
         <span class="question-progress">Vraag {{ forloop.index }}/{{ sections.size }}</span>

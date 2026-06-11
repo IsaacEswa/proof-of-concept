@@ -22,7 +22,7 @@ const sectionsURL = 'teylers_museum_exhibits_sections'
 const questionsURL = 'teylers_museum_quiz_questions'
 
 app.get('/', async function (request, response) {
-    const { answered, correct } = request.query
+    const { answered, correct, step } = request.query
 
     const sectionParams = new URLSearchParams()
     sectionParams.set(
@@ -38,6 +38,7 @@ app.get('/', async function (request, response) {
 
     const sections = {
         sections: sectionsJSON.data,
+        step: Number(step ?? 0),
         answered,
         correct,
     }
@@ -46,7 +47,7 @@ app.get('/', async function (request, response) {
 })
 
 app.post('/quiz/answer', async (request, response) => {
-    const { questionId, answerKey } = request.body
+    const { questionId, answerKey, step } = request.body
 
     const questionParams = new URLSearchParams()
     questionParams.set('fields', '*,options.*')
@@ -79,7 +80,7 @@ app.post('/quiz/answer', async (request, response) => {
     })
 
     response.redirect(
-        '/?answered=' + questionId + '&correct=' + isCorrect
+        '/?step=' + (Number(step) + 1) + '?answered=' + questionId + '&correct=' + isCorrect
     )
 })
 
