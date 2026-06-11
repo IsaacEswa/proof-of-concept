@@ -7,8 +7,9 @@
             Vraag {{ step | plus: 1 }}/{{ sections.size }}
         </small>
         <h3 class="question-title">{{ question.question }}</h3>
+
         <div class="selected-answer">
-            <p>{{ correctOption.key }}. {{ correctOption.answer }}</p>
+            <p>{{ selectedOption.key }}. {{ selectedOption.answer }}</p>
         </div>
 
         <div class="question-explanation">

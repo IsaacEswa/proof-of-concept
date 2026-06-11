@@ -22,7 +22,7 @@ const sectionsURL = 'teylers_museum_exhibits_sections'
 const questionsURL = 'teylers_museum_quiz_questions'
 
 app.get('/', async function (request, response) {
-    const { answered, correct, step, screen, questionId } = request.query
+    const { answered, correct, step, screen, questionId, answerKey } = request.query
     const currentStep = Number(step ?? 0)
 
     const sectionParams = new URLSearchParams()
@@ -39,6 +39,7 @@ app.get('/', async function (request, response) {
 
     let question = null
     let correctOption = null
+    let selectedOption = null
 
     if (screen === 'result' && questionId) {
         const questionParams = new URLSearchParams()
@@ -49,10 +50,13 @@ app.get('/', async function (request, response) {
         )
 
         const questionJSON = await questionResponse.json()
-
         question = questionJSON.data
 
         correctOption = question.options.find(o => o.is_correct)
+
+        selectedOption = question.options.find(
+            option => option.key === answerKey
+        )
     }
 
     const sections = {
@@ -63,6 +67,8 @@ app.get('/', async function (request, response) {
         screen: screen ?? 'question',
         question,
         correctOption,
+        answerKey,
+        selectedOption,
     }
 
     response.render('index.liquid', sections)
@@ -102,7 +108,11 @@ app.post('/quiz/answer', async (request, response) => {
     })
 
     response.redirect(
-        '/?step=' + step + '&questionId=' + questionId + '&correct=' + isCorrect + '&screen=result'
+        '/?screen=result' +
+        '&step=' + step +
+        '&questionId=' + questionId +
+        '&answerKey=' + answerKey +
+        '&correct=' + isCorrect
     )
 })
 
