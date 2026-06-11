@@ -1,5 +1,6 @@
 const quizComponent = document.querySelector('.quiz-component')
 const quizForms = document.querySelectorAll('.question-answer-form')
+// const nextQuizBtn = document.querySelectorAll('quiz-btn')
 
 quizForms.forEach(form => {
     form.addEventListener('submit', async (event) => {
@@ -40,6 +41,28 @@ quizForms.forEach(form => {
         submitButton.textContent = 'Gecontroleerd'
 
     })
+})
+
+document.addEventListener('click', async (event) => {
+    const nextQuizBtn = event.target.closest('.next-question')
+    if (!nextQuizBtn) return
+
+    event.preventDefault()
+
+    // loading state optioneel
+    nextQuizBtn.textContent = 'Laden...'
+
+    const response = await fetch(nextQuizBtn.href)
+    const responseHTML = await response.text()
+
+    const parser = new DOMParser()
+    const responseDOM = parser.parseFromString(responseHTML, 'text/html')
+
+    const newQuiz = responseDOM.querySelector('.quiz-component')
+
+    if (newQuiz) {
+        document.querySelector('.quiz-component').innerHTML = newQuiz.innerHTML
+    }
 })
 
 
