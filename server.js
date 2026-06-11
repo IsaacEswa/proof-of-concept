@@ -80,7 +80,7 @@ app.post('/quiz/answer', async (request, response) => {
     })
 
     response.redirect(
-        '/?step=' + (Number(step) + 1) + '?answered=' + questionId + '&correct=' + isCorrect
+        '/?step=' + (Number(step) + 1) + '&answered=' + questionId + '&correct=' + isCorrect
     )
 })
 
