@@ -12,8 +12,19 @@ quizForms.forEach(form => {
         submitButton.textContent = 'Aan het controleren...'
         submitButton.disabled = true
 
-
         let formData = new FormData(form)
+
+        // FETCH DATA
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: new URLSearchParams(formData)
+        })
+
+        // PROCESS DATA
+        const responseData = await response.text()
+        // DOM parser
+        const parser = new DOMParser()
+        const responseDOM = parser.parseFromString(responseHTML, 'text/html')
     })
 })
 
