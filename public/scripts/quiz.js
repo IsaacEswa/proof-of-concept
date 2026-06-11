@@ -1,46 +1,45 @@
 const quizComponent = document.querySelector('.quiz-component')
-const quizForms = document.querySelectorAll('.question-answer-form')
-// const nextQuizBtn = document.querySelectorAll('quiz-btn')
 
-quizForms.forEach(form => {
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault()
 
-        const submitButton = form.querySelector('.quiz-btn')
+document.addEventListener('submit', async (event) => {
+    const form = event.target.closest('.question-answer-form')
 
-        // LOADING STATE
-        submitButton.classList.add('loading')
-        submitButton.textContent = 'Aan het controleren...'
-        submitButton.disabled = true
+    if (!form) return
 
-        let formData = new FormData(form)
+    event.preventDefault()
 
-        // FETCH DATA
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: new URLSearchParams(formData)
-        })
+    const submitButton = form.querySelector('.quiz-btn')
 
-        // PROCESS DATA
-        const responseData = await response.text()
-        // DOM parser
-        const parser = new DOMParser()
-        const responseDOM = parser.parseFromString(responseData, 'text/html')
+    // LOADING STATE
+    submitButton.classList.add('loading')
+    submitButton.textContent = 'Aan het controleren...'
+    submitButton.disabled = true
 
-        const newQuiz = responseDOM.querySelector('.quiz-component')
+    const formData = new FormData(form)
 
-        // OVERWRITE HTML
-        if (newQuiz) {
-            quizComponent.innerHTML = newQuiz.innerHTML
-        }
-
-        // loading reset
-        submitButton.classList.remove('loading')
-        submitButton.disabled = false
-        submitButton.classList.add('success')
-        submitButton.textContent = 'Gecontroleerd'
-
+    // FETCH DATA
+    const response = await fetch(form.action, {
+        method: form.method,
+        body: new URLSearchParams(formData)
     })
+
+    // PROCESS DATA
+    const responseData = await response.text()
+
+    // console.log(response.status)
+    // console.log(response.url)
+    // console.log(responseData)
+
+
+    const parser = new DOMParser()
+    const responseDOM = parser.parseFromString(responseData, 'text/html')
+
+    const newQuiz = responseDOM.querySelector('.quiz-component')
+    const currentQuiz = document.querySelector('.quiz-component')
+
+    if (newQuiz && currentQuiz) {
+        currentQuiz.replaceWith(newQuiz)
+    }
 })
 
 document.addEventListener('click', async (event) => {
@@ -59,9 +58,11 @@ document.addEventListener('click', async (event) => {
     const responseDOM = parser.parseFromString(responseHTML, 'text/html')
 
     const newQuiz = responseDOM.querySelector('.quiz-component')
+    const currentQuiz = document.querySelector('.quiz-component')
+
 
     if (newQuiz) {
-        document.querySelector('.quiz-component').innerHTML = newQuiz.innerHTML
+        currentQuiz.replaceWith(newQuiz)
     }
 })
 
