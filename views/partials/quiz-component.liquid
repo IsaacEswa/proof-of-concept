@@ -1,5 +1,21 @@
 <div class="quiz-component">
 
+    {% if screen == 'result' %}
+    <div class="quiz-feedback">
+        {% if correct == 'true' %}
+        <h2>Goed!</h2>
+        <p>Je antwoord is correct 🎉</p>
+        {% else %}
+        <h2>Helaas</h2>
+        <p>Dat was niet het juiste antwoord.</p>
+        {% endif %}
+
+        <a class="primary-button" href="/?step={{ step | plus: 1 }}">
+            Volgende vraag
+        </a>
+    </div>
+    {% else %}
+
     {% for section in sections %}
     <article class="single-quiz-question {% if step != forloop.index0 %}is-hidden{% endif %}">
         <p>DEBUG step: {{ step }}</p>
@@ -34,17 +50,19 @@
             </button>
         </form>
 
-        <h3>Resultaat:</h3>
+        {% comment %} <h3>Resultaat:</h3>
         {% if answered %}
         {% if correct == "true" %}
         <p class="">✅ Goed!</p>
         {% else %}
         <p class="">❌ Fout</p>
         {% endif %}
-        {% endif %}
+        {% endif %} {% endcomment %}
 
     </article>
     {% endfor %}
+
+    {% endif %}
 </div>
 
 {% comment %} ORIGINAL

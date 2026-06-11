@@ -22,7 +22,8 @@ const sectionsURL = 'teylers_museum_exhibits_sections'
 const questionsURL = 'teylers_museum_quiz_questions'
 
 app.get('/', async function (request, response) {
-    const { answered, correct, step } = request.query
+    const { answered, correct, step, screen } = request.query
+    const currentStep = Number(step ?? 0)
 
     const sectionParams = new URLSearchParams()
     sectionParams.set(
@@ -38,9 +39,10 @@ app.get('/', async function (request, response) {
 
     const sections = {
         sections: sectionsJSON.data,
-        step: Number(step ?? 0),
+        step: currentStep,
         answered,
         correct,
+        screen: screen ?? 'question',
     }
 
     response.render('index.liquid', sections)
@@ -80,7 +82,7 @@ app.post('/quiz/answer', async (request, response) => {
     })
 
     response.redirect(
-        '/?step=' + (Number(step) + 1) + '&answered=' + questionId + '&correct=' + isCorrect
+        '/?step=' + (Number(step) + 1) + '&answered=' + questionId + '&correct=' + isCorrect + '&screen=result'
     )
 })
 
