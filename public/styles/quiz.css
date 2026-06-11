@@ -36,6 +36,7 @@
 
     .question-explanation {
         margin-top: 1em;
+        font-style: italic;
     }
 
     .quiz-btn {
@@ -77,8 +78,21 @@
     .single-quiz-question.is-hidden {
         display: none;
     }
-}
 
+    .selected-answer.is-correct,
+    .selected-answer.is-wrong {
+        justify-content: space-between;
+        gap: .5em;
+    }
+
+    .selected-answer.is-correct {
+        background-color: #79EAAA;
+    }
+
+    .selected-answer.is-wrong {
+        background-color: #E06868;
+    }
+}
 
 /* JS ENHANCEMENT 
 .stacked {
