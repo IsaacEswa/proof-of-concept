@@ -24,6 +24,7 @@ const questionsURL = 'teylers_museum_quiz_questions'
 app.get('/', async function (request, response) {
     const { answered, correct, step, screen, questionId, answerKey } = request.query
     const currentStep = Number(step ?? 0)
+    // const screen = request.query.screen ?? 'question'
 
     const sectionParams = new URLSearchParams()
     sectionParams.set(
@@ -58,6 +59,8 @@ app.get('/', async function (request, response) {
             option => option.key === answerKey
         )
     }
+
+    const isLastQuestion = currentStep >= sectionsJSON.data.length - 1
 
     const sections = {
         sections: sectionsJSON.data,

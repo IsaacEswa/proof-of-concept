@@ -91,6 +91,7 @@
     .selected-answer.is-wrong {
         justify-content: space-between;
         gap: .5em;
+        cursor: text;
     }
 
     .selected-answer.is-correct {
@@ -99,6 +100,22 @@
 
     .selected-answer.is-wrong {
         background-color: #E06868;
+    }
+
+    .score-container {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        svg {
+            fill: var(--primary-color);
+        }
+
+        p {
+            font-style: italic;
+            /* margin-top: .5em; */
+        }
     }
 }
 
