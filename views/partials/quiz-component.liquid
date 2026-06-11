@@ -1,7 +1,7 @@
 <div class="quiz-component">
 
     {% for section in sections %}
-    <article class="single-quiz-question">
+    <article class="single-quiz-question {% unless forloop.first %}is-hidden{% endunless %}">
 
         <form class="question-answer-form" action="/quiz/answer" method="post">
             <input type="hidden" name="questionId" value="{{ section.questions[0].id }}">
@@ -31,15 +31,6 @@
                 Controleren
             </button>
         </form>
-
-        <h3>Resultaat:</h3>
-        {% if answered %}
-        {% if correct == "true" %}
-        <p class="feedback feedback--correct">✅ Goed!</p>
-        {% else %}
-        <p class="feedback feedback--wrong">❌ Fout</p>
-        {% endif %}
-        {% endif %}
 
     </article>
     {% endfor %}

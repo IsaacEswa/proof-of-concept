@@ -33,7 +33,10 @@
     }
 }
 
-.single-quiz-question:not(:first-child) {
+/* .single-quiz-question:not(:first-child) {
+    display: none;
+} */
+.single-quiz-question.is-hidden {
     display: none;
 }
 
