@@ -1,3 +1,14 @@
+const quizComponent = document.querySelector('.quiz-component')
+const quizForms = document.querySelectorAll('.question-answer-form')
+
+quizForms.forEach(form => {
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+    })
+})
+
+
+// ################ DRAGGABLE CODE ################
 // const component = document.querySelector('.quiz-component');
 // component.classList.add('cards-stacked');
 // component.querySelectorAll('.single-quiz-question').forEach(q => q.classList.add('stacked'));
