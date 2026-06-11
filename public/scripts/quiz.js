@@ -4,6 +4,16 @@ const quizForms = document.querySelectorAll('.question-answer-form')
 quizForms.forEach(form => {
     form.addEventListener('submit', async (event) => {
         event.preventDefault()
+
+        const submitButton = form.querySelector('.quiz-btn')
+
+        // LOADING STATE
+        submitButton.classList.add('loading')
+        submitButton.textContent = 'Aan het controleren...'
+        submitButton.disabled = true
+
+
+        let formData = new FormData(form)
     })
 })
 
