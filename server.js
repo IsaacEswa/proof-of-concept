@@ -20,8 +20,7 @@ app.set('views', './views')
 const baseURL = 'https://fdnd-agency.directus.app/items/teylers_museum_'
 
 app.get('/', async function (request, response) {
-    const answered = request.query.answered
-    const correct = request.query.correct
+    const { answered, correct } = request.query
 
     const sectionParams = new URLSearchParams()
     sectionParams.set(
@@ -47,10 +46,14 @@ app.get('/', async function (request, response) {
 app.post('/quiz/answer', async (request, response) => {
     const { questionId, answerKey } = request.body
 
+    const questionParams = new URLSearchParams()
+    questionParams.set('fields', '*,options.*')
+
     const questionResponse = await fetch(
-        `${baseURL}quiz_questions/${questionId}?fields=*,options.*`
+        `${baseURL}quiz_questions/${questionId}?` + questionParams.toString()
         // BIJV: https://fdnd-agency.directus.app/items/teylers_museum_quiz_questions/1?fields=*,options.*
     )
+
     const questionJSON = await questionResponse.json()
 
     const selectedOption = questionJSON.data.options.find(
