@@ -38,8 +38,8 @@ app.get('/', async function (request, response) {
 
     const sections = {
         sections: sectionsJSON.data,
-        answered: request.query.answered,
-        correct: request.query.correct,
+        answered,
+        correct,
     }
 
     response.render('index.liquid', sections)
