@@ -24,7 +24,21 @@ quizForms.forEach(form => {
         const responseData = await response.text()
         // DOM parser
         const parser = new DOMParser()
-        const responseDOM = parser.parseFromString(responseHTML, 'text/html')
+        const responseDOM = parser.parseFromString(responseData, 'text/html')
+
+        const newQuiz = responseDOM.querySelector('.quiz-component')
+
+        // OVERWRITE HTML
+        if (newQuiz) {
+            quizComponent.innerHTML = newQuiz.innerHTML
+        }
+
+        // loading reset
+        submitButton.classList.remove('loading')
+        submitButton.disabled = false
+        submitButton.classList.add('success')
+        submitButton.textContent = 'Gecontroleerd'
+
     })
 })
 
