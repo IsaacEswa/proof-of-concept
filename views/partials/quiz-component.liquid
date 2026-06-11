@@ -49,8 +49,10 @@
             Volgende vraag
         </a> {% endcomment %}
 
+        {% assign last = sections.size | minus: 1 %}
+
         <a class="primary-button quiz-btn"
-            href="{% if step >= sections.size - 1 %}/?screen=score{% else %}/?step={{ step | plus: 1 }}{% endif %}">
+            href="{% if step >= last %}/?screen=score{% else %}/?step={{ step | plus: 1 }}{% endif %}">
             Volgende vraag
         </a>
 

@@ -22,7 +22,7 @@ const sectionsURL = 'teylers_museum_exhibits_sections'
 const questionsURL = 'teylers_museum_quiz_questions'
 
 app.get('/', async function (request, response) {
-    const { answered, correct, step, screen, questionId, answerKey } = request.query
+    const { answered, correct, step, screen = 'question', questionId, answerKey } = request.query
     const currentStep = Number(step ?? 0)
     // const screen = request.query.screen ?? 'question'
 
@@ -60,14 +60,14 @@ app.get('/', async function (request, response) {
         )
     }
 
-    const isLastQuestion = currentStep >= sectionsJSON.data.length - 1
+    // const isLastQuestion = currentStep >= sectionsJSON.data.length - 1
 
     const sections = {
         sections: sectionsJSON.data,
-        step: Number(step ?? 0),
+        step: currentStep,
         answered,
         correct,
-        screen: screen ?? 'question',
+        screen,
         question,
         correctOption,
         answerKey,
