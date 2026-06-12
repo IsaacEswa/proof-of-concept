@@ -9,6 +9,28 @@
                 <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
                 <h3 class="timeline-title">{{ timelineItem.title }}</h3>
                 <p class="timeline-summary">{{ timelineItem.summary }}</p>
+
+                <details class="timeline-details">
+                    <summary>Lees meer</summary>
+                    <div class="timeline-details-content">
+                        {% for block in timelineItem.content_blocks %}
+
+                        {% if block.block_type == 'heading' %}
+                        <h4>{{ block.text }}</h4>
+                        <br>
+                        {% elsif block.block_type == 'paragraph' %}
+                        <p>{{ block.text }}</p>
+                        <br>
+
+                        {% elsif block.block_type == 'quote' %}
+                        <p><strong>{{ block.text }}</strong></p>
+                        <br>
+
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </details>
+
             </div>
 
             <div class="timeline-article-image">

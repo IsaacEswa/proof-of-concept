@@ -36,9 +36,6 @@ header {
         }
 
         ul {
-            /* padding: 0;
-        margin: 0; */
-
             li {
                 list-style: none;
                 padding: 1em;
@@ -47,16 +44,10 @@ header {
                 a {
                     text-decoration: none;
                     color: var(--primary-color);
-
-
                 }
 
                 &:hover {
                     background-color: var(--secondary-color);
-
-                    /* a {
-                    color: var(--green);
-                } */
                 }
             }
         }
@@ -78,25 +69,14 @@ header {
             scale: 1.2;
         }
     }
-
-
-
-
 }
-
-
-
 
 .timeline {
     .timeline-component {
         position: relative;
         margin: auto;
 
-
         @media (min-width: 768px) {
-            /* width: 75%; */
-
-
             .timeline-item:nth-child(even) .timeline-article {
                 direction: rtl;
             }
@@ -122,16 +102,12 @@ header {
             }
         }
 
-        /* @media (min-width: 768px) {
-            display: grid;
-        } */
-
         .timeline-item {
             display: grid;
             grid-template-columns: 20% 80%;
             column-gap: 1em;
             overflow: hidden;
-            padding-top: 3em;
+            padding-top: 5em;
             color: var(--tertiary-color);
 
             @media (min-width: 768px) {
@@ -202,22 +178,44 @@ header {
                     display: flex;
                     flex-direction: column;
                     gap: .8em;
+                    margin-right: 1em;
 
                     date {
                         font-weight: 400;
                     }
 
-                    /* .timeline-title {
-                        font-weight: 600;
-                    } */
-
-                    .timeline-summary {
-                        font-weight: 200;
-                        max-width: 90%;
-
-                        @media (min-width: 768px) {
-                            max-width: 100%;
+                    .timeline-details {
+                        summary {
+                            /* width: 100%; */
+                            padding: .5em 0;
+                            border-top: 1px solid var(--tertiary-color);
+                            position: relative;
+                            cursor: pointer;
+                            list-style: none;
                         }
+                    }
+
+                    .timeline-details summary:after {
+                        content: "+";
+                        color: var(--tertiary-color);
+                        position: absolute;
+                        font-size: 2em;
+                        right: 0;
+                        top: 0;
+                        font-weight: 200;
+                        transform-origin: center;
+                        transition: .2s ease-in-out;
+                    }
+
+                    .timeline-details[open] summary:after {
+                        transform: rotate(45deg);
+                    }
+
+                    .timeline-details[open] .timeline-details-content {
+                        animation: open .3s ease-in-out;
+                        opacity: 0.7;
+                        font-style: italic;
+
                     }
                 }
 
@@ -232,11 +230,17 @@ header {
                         }
                     }
                 }
-
-
-
             }
         }
     }
+}
 
+@keyframes open {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
 }
