@@ -1,54 +1,29 @@
-const quizComponent = document.querySelector('.quiz-component')
-
-
 document.addEventListener('submit', async (event) => {
     const form = event.target.closest('.question-answer-form')
-
     if (!form) return
-
     event.preventDefault()
 
     const submitButton = form.querySelector('.quiz-btn')
-
-    // LOADING STATE
     submitButton.classList.add('loading')
     submitButton.textContent = 'Aan het controleren...'
     submitButton.disabled = true
 
     const formData = new FormData(form)
-
-    // FETCH DATA
-    const response = await fetch(form.action, {
-        method: form.method,
-        body: new URLSearchParams(formData)
-    })
-
-    // PROCESS DATA
+    const response = await fetch(form.action, { method: form.method, body: new URLSearchParams(formData) })
     const responseData = await response.text()
-
-    // console.log(response.status)
-    // console.log(response.url)
-    // console.log(responseData)
-
 
     const parser = new DOMParser()
     const responseDOM = parser.parseFromString(responseData, 'text/html')
-
     const newQuiz = responseDOM.querySelector('.quiz-component')
-    const currentQuiz = document.querySelector('.quiz-component')
 
-    if (newQuiz && currentQuiz) {
-        currentQuiz.replaceWith(newQuiz)
-    }
+    swapQuiz(newQuiz, 'down')
 })
 
 document.addEventListener('click', async (event) => {
     const nextQuizBtn = event.target.closest('.next-question')
     if (!nextQuizBtn) return
-
     event.preventDefault()
 
-    // loading state optioneel
     nextQuizBtn.textContent = 'Laden...'
 
     const response = await fetch(nextQuizBtn.href)
@@ -56,15 +31,84 @@ document.addEventListener('click', async (event) => {
 
     const parser = new DOMParser()
     const responseDOM = parser.parseFromString(responseHTML, 'text/html')
-
     const newQuiz = responseDOM.querySelector('.quiz-component')
-    const currentQuiz = document.querySelector('.quiz-component')
 
-
-    if (newQuiz) {
-        currentQuiz.replaceWith(newQuiz)
-    }
+    swapQuiz(newQuiz, 'down')
 })
+
+async function swapQuiz(newQuiz, animateDirection = 'right') {
+    const currentQuiz = document.querySelector('.quiz-component')
+    const quizWrapper = document.querySelector('.quiz')
+    if (!newQuiz || !currentQuiz) return
+
+    if (!document.startViewTransition) {
+        currentQuiz.replaceWith(newQuiz)
+        initStacked()
+        newQuiz.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        return
+    }
+
+    quizWrapper.classList.add('shifting')
+
+    const transition = document.startViewTransition(() => {
+        currentQuiz.replaceWith(newQuiz)
+        initStacked()
+    })
+
+    await transition.finished
+
+    newQuiz.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
+    setTimeout(() => quizWrapper.classList.remove('shifting'), 5)
+}
+
+// ################ STACKED CARDS INIT ################
+function initStacked() {
+    const component = document.querySelector('.quiz-component');
+    component.classList.add('cards-stacked');
+    component.querySelectorAll('.single-quiz-question').forEach(q => q.classList.add('stacked'));
+
+    const topCard = () => component.querySelector('.stacked:not(.gone)');
+
+    function dismissCard(card, direction) {
+        card.classList.replace('dragging', direction) || card.classList.add(direction);
+        card.classList.add('gone');
+    }
+
+    component.querySelectorAll('.stacked').forEach(card => {
+        let x0, y0;
+        card.addEventListener('keydown', e => {
+            if (e.key !== 'Enter') return;
+            if (!card.querySelector('[data-correct="true"]:checked')) return;
+            if (card !== topCard()) return;
+            dismissCard(card, 'right');
+        });
+        card.addEventListener('pointerdown', e => {
+            if (e.target.closest('input, label') || card !== topCard()) return;
+            if (!card.querySelector('[data-correct="true"]:checked')) return;
+            card.setPointerCapture(e.pointerId);
+            card.classList.add('dragging');
+            [x0, y0] = [e.clientX, e.clientY];
+            card.style.setProperty('--delta-x', 0);
+            card.style.setProperty('--delta-y', 0);
+        });
+        card.addEventListener('pointermove', e => {
+            if (!card.classList.contains('dragging')) return;
+            const dx = e.clientX - x0;
+            card.style.setProperty('--delta-x', dx);
+            card.style.setProperty('--delta-y', e.clientY - y0);
+            if (Math.abs(dx) > 100) dismissCard(card, dx > 0 ? 'right' : 'left');
+        });
+        card.addEventListener('pointerup', () => {
+            if (!card.classList.contains('dragging')) return;
+            card.classList.remove('dragging');
+            card.style.setProperty('--delta-x', 0);
+            card.style.setProperty('--delta-y', 0);
+        });
+    });
+}
+initStacked();
+
 
 
 // ################ DRAGGABLE CODE ################

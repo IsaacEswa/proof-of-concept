@@ -60,8 +60,6 @@ app.get('/', async function (request, response) {
         )
     }
 
-    // const isLastQuestion = currentStep >= sectionsJSON.data.length - 1
-
     const sections = {
         sections: sectionsJSON.data,
         step: currentStep,
