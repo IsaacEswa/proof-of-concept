@@ -6,7 +6,9 @@
         <time class="timeline-year" datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
         <article class="timeline-article">
             <div class="timeline-article-content">
-                <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
+                {% comment %} <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
+                {% endcomment %}
+                <p>{{ timelineItem.start_year }} - {{ timelineItem.end_year }}</p>
                 <h3 class="timeline-title">{{ timelineItem.title }}</h3>
                 <p class="timeline-summary">{{ timelineItem.summary }}</p>
 

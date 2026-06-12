@@ -95,9 +95,29 @@ header {
             width: 2px;
             height: 100%;
             background-color: var(--tertiary-color);
+            opacity: .5;
 
             @media (min-width: 768px) {
                 /* display: none; */
+                left: 50%;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 20%;
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary-color);
+            transform-origin: top;
+            transform: scaleY(0);
+            animation: progress-line linear;
+            animation-timeline: view();
+            animation-range: cover;
+
+            @media (min-width: 768px) {
                 left: 50%;
             }
         }
@@ -124,7 +144,7 @@ header {
                 font-weight: 400;
                 font-style: italic;
                 position: relative;
-
+                color: var(--secondary-color);
 
                 display: flex;
                 justify-content: center;
@@ -252,11 +272,19 @@ header {
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        /* scale: 0.8; */
     }
 
     100% {
         opacity: 1;
-        /* scale: 1; */
+    }
+}
+
+@keyframes progress-line {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
     }
 }
