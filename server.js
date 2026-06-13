@@ -2,6 +2,7 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 const app = express()
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(express.static('public'))
 const engine = new Liquid();
 app.engine('liquid', engine.express());
@@ -11,30 +12,113 @@ app.set('views', './views')
 // https://fdnd-agency.directus.app/items/teylers_museum_exhibits/1 | Topstuk
 // https://fdnd-agency.directus.app/items/teylers_museum_exhibits_sections | Timeline items
 // https://fdnd-agency.directus.app/items/teylers_museum_persons | Creators
-// https://fdnd-agency.directus.app/items/teylers_museum_quiz_questions | Quiz questions
 
-const baseURL = 'https://fdnd-agency.directus.app/items/teylers_museum_'
-const timelineItem_fields = 'title, id, slug, exhibit, cover.*, content_blocks, start_year, end_year, era, summary'
+// https://fdnd-agency.directus.app/items/teylers_museum_quiz_questions | Quiz questions
+// https://fdnd-agency.directus.app/items/teylers_museum_quiz_attempts | Quiz attemps
+// https://fdnd-agency.directus.app/items/teylers_museum_quiz_answers| Quiz answers
+
+const baseURL = 'https://fdnd-agency.directus.app/items/'
+const sectionsURL = 'teylers_museum_exhibits_sections'
+const questionsURL = 'teylers_museum_quiz_questions'
 
 app.get('/', async function (request, response) {
-    const timelineParams = new URLSearchParams()
-    timelineParams.set('fields', timelineItem_fields)
-    timelineParams.set('sort', 'start_year')
-    const timelineDataResponse = await fetch(baseURL + 'exhibits_sections' + '?' + timelineParams.toString())
-    const timelineDataResponseJSON = await timelineDataResponse.json()
+    const { answered, correct, step, screen = 'question', questionId, answerKey } = request.query
+    const currentStep = Number(step ?? 0)
+    // const screen = request.query.screen ?? 'question'
 
-    const quizParams = new URLSearchParams()
-    // quizParams.set('sort', 'id')
-    const quizQuestionsResponse = await fetch(baseURL + 'quiz_questions' + '?' + quizParams.toString())
-    const quizQuestionsResponseJSON = await quizQuestionsResponse.json()
+    const sectionParams = new URLSearchParams()
+    sectionParams.set(
+        'fields',
+        '*,questions.*,questions.options.*'
+    )
 
-    console.log(quizQuestionsResponseJSON)
+    const sectionsResponse = await fetch(
+        baseURL + sectionsURL + '?' + sectionParams.toString()
+    )
 
-    response.render('index.liquid', {
-        timelineItems: timelineDataResponseJSON.data,
-        quizQuestions: quizQuestionsResponseJSON.data
-    })
+    const sectionsJSON = await sectionsResponse.json()
+
+    let question = null
+    let correctOption = null
+    let selectedOption = null
+
+    if (screen === 'result' && questionId) {
+        const questionParams = new URLSearchParams()
+        questionParams.set('fields', '*,options.*')
+
+        const questionResponse = await fetch(
+            baseURL + questionsURL + '/' + questionId + '?' + questionParams.toString()
+        )
+
+        const questionJSON = await questionResponse.json()
+        question = questionJSON.data
+
+        correctOption = question.options.find(o => o.is_correct)
+
+        selectedOption = question.options.find(
+            option => option.key === answerKey
+        )
+    }
+
+    const sections = {
+        sections: sectionsJSON.data,
+        step: currentStep,
+        answered,
+        correct,
+        screen,
+        question,
+        correctOption,
+        answerKey,
+        selectedOption,
+    }
+
+    response.render('index.liquid', sections)
 })
+
+app.post('/quiz/answer', async (request, response) => {
+    const { questionId, answerKey, step } = request.body
+
+    const questionParams = new URLSearchParams()
+    questionParams.set('fields', '*,options.*')
+
+    const questionResponse = await fetch(
+        baseURL + questionsURL + '/' + questionId + '?' + questionParams.toString()
+        // BIJV: https://fdnd-agency.directus.app/items/teylers_museum_quiz_questions/1?fields=*,options.*
+    )
+
+    const questionJSON = await questionResponse.json()
+
+    const selectedOption = questionJSON.data.options.find(
+        option => option.key === answerKey
+    )
+
+    const isCorrect = selectedOption?.is_correct === true
+
+    await fetch(baseURL + 'quiz_answers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            attempt: 2, // tijdelijk hardcoded
+            question: questionId,
+            chosen_option: answerKey,
+            is_correct: isCorrect,
+            answered_at: new Date().toISOString(),
+        })
+    })
+
+    response.redirect(
+        '/?screen=result' +
+        '&step=' + step +
+        '&questionId=' + questionId +
+        '&answerKey=' + answerKey +
+        '&correct=' + isCorrect
+    )
+})
+
+
+
 
 app.use((req, res, next) => {
     res.status(404).send("Deze pagina bestaat niet")
