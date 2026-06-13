@@ -16,6 +16,7 @@
     view-transition-name: quiz-component;
     position: relative;
     z-index: 2;
+    border: 1px solid var(--primary-color);
 
     scroll-margin-top: 2em;
 
@@ -85,6 +86,16 @@
                 .quiz-option:hover {
                     scale: 0.97;
                 }
+
+                @media (min-width: 768px) {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.5rem;
+
+                    .quiz-options legend {
+                        grid-column: 1 / -1;
+                    }
+                }
             }
         }
     }
@@ -134,8 +145,14 @@
     width: 90%;
     height: 90%;
     background-color: var(--tertiary-color);
-    border: 1px solid var(--primary-color);
+    border: 2px solid var(--primary-color);
     transition: translate .3s ease, rotate .3s ease, opacity .3s ease;
+
+    @media (min-width: 768px) {
+        width: 85%;
+        height: 85%;
+        top: 3%;
+    }
 }
 
 .quiz::before {
