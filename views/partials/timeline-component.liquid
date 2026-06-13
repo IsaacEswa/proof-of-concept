@@ -8,14 +8,14 @@
             <div class="timeline-article-content">
                 {% comment %} <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
                 {% endcomment %}
-                <p>{{ timelineItem.start_year }} - {{ timelineItem.end_year }}</p>
-                <h3 class="timeline-title">{{ timelineItem.title }}</h3>
-                <p class="timeline-summary">{{ timelineItem.summary }}</p>
+                <p>{{ section.start_year }} - {{ section.end_year }}</p>
+                <h3 class="timeline-title">{{ section.title }}</h3>
+                <p class="timeline-summary">{{ section.summary }}</p>
 
                 <details class="timeline-details">
                     <summary>Lees meer</summary>
                     <div class="timeline-details-content">
-                        {% for block in timelineItem.content_blocks %}
+                        {% for block in section.content_blocks %}
 
                         {% if block.block_type == 'heading' %}
                         <h4>{{ block.text }}</h4>
