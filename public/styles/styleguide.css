@@ -25,6 +25,7 @@ body {
     font-family: "Inter", sans-serif;
     line-height: 1.5;
     font-size: clamp(1rem, 1.2vw, 1.125rem);
+    font-weight: 400;
 }
 
 h1,
@@ -39,6 +40,7 @@ h3 {
     font-size: clamp(1.25rem, 3vw, 1.5rem);
 
 }
+
 
 section {
     padding: 50px 15px;

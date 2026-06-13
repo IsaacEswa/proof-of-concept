@@ -274,7 +274,7 @@
 }
 
 .stacked {
-    cursor: not-allowed;
+    cursor: default;
 
     transition:
         opacity .5s,
