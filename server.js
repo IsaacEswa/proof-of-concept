@@ -18,24 +18,35 @@ app.set('views', './views')
 // https://fdnd-agency.directus.app/items/teylers_museum_quiz_answers| Quiz answers
 
 const baseURL = 'https://fdnd-agency.directus.app/items/'
+const detailsURL = 'teylers_museum_exhibits'
 const sectionsURL = 'teylers_museum_exhibits_sections'
 const questionsURL = 'teylers_museum_quiz_questions'
 
 app.get('/', async function (request, response) {
     const { answered, correct, step, screen = 'question', questionId, answerKey } = request.query
     const currentStep = Number(step ?? 0)
-    // const screen = request.query.screen ?? 'question'
 
+    // DETAILS
+    const detailParams = new URLSearchParams()
+    detailParams.set(
+        'fields',
+        '*.*'
+    )
+    const detailsResponse = await fetch(
+        baseURL + detailsURL + '?' + detailParams.toString()
+    )
+    const detailsJSON = await detailsResponse.json()
+
+
+    // SECTIONS
     const sectionParams = new URLSearchParams()
     sectionParams.set(
         'fields',
         '*,questions.*,questions.options.*'
     )
-
     const sectionsResponse = await fetch(
         baseURL + sectionsURL + '?' + sectionParams.toString()
     )
-
     const sectionsJSON = await sectionsResponse.json()
 
     let question = null
@@ -60,7 +71,7 @@ app.get('/', async function (request, response) {
         )
     }
 
-    const sections = {
+    const data = {
         sections: sectionsJSON.data,
         step: currentStep,
         answered,
@@ -70,9 +81,14 @@ app.get('/', async function (request, response) {
         correctOption,
         answerKey,
         selectedOption,
+
+        details: detailsJSON.data,
     }
 
-    response.render('index.liquid', sections)
+    console.log(detailsJSON.data)
+
+
+    response.render('index.liquid', data)
 })
 
 app.post('/quiz/answer', async (request, response) => {

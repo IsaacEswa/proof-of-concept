@@ -8,7 +8,7 @@ header {
         margin: auto;
 
         .header-logo img {
-            width: 100px;
+            width: 80px;
         }
 
         .openmenu-btn {
@@ -69,4 +69,18 @@ header {
             scale: 1.2;
         }
     }
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--tertiary-color);
+
+
+    img {
+        width: 40em;
+        height: 100%;
+    }
+
 }

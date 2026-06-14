@@ -1,10 +1,29 @@
 {% render 'partials/head.liquid' %}
 
+<section class="hero">
+    {% for detail in details %}
+
+    {% if detail.cover %}
+    <picture>
+        <source type="image/avif"
+            srcset="https://fdnd-agency.directus.app/assets/{{ detail.cover.id }}?fit=cover&format=avif&height=700&quality=80">
+
+        <source type="image/webp"
+            srcset="https://fdnd-agency.directus.app/assets/{{ detail.cover.id }}?fit=cover&format=webp&height=700&quality=80">
+
+        <img src="https://fdnd-agency.directus.app/assets/{{ detail.cover }}?height=700&quality=80"
+            width="{{ detail.cover.width }}" height="{{ detail.cover.height }}" alt="">
+    </picture>
+    {% else %}
+    <img src="/assets/placeholder.jpg" alt="Geen afbeelding beschikbaar">
+    {% endif %}
+
+    {% endfor %}
+</section>
+
 <section class="timeline">
     {% comment %} <h2 class="section-title">Timeline</h2> {% endcomment %}
-    {% render 'partials/timeline-component.liquid', sections: sections, answered: answered, correct: correct, step:
-    step, screen: screen, question: question, correctOption: correctOption, answerKey: answerKey,
-    selectedOption: selectedOption %}
+    {% render 'partials/timeline-component.liquid', sections: sections %}
 
 </section>
 
@@ -17,26 +36,3 @@
 </section>
 
 {% render 'partials/foot.liquid' %}
-
-{% comment %} VERSION 01
-{% for quizQuestion in quizQuestions %}
-<article class="quiz-card" data-question-id="{{ quizQuestion.id }}">
-    <button class="back-btn" aria-label="Vorige vraag">Vorige vraag</button>
-    <span class="question-progress">Vraag {{ quizQuestion.id }}/{{ quizQuestions.size }}</span>
-    <h2>{{ quizQuestion.question }}</h2>
-    <fieldset class="quiz-options">
-        {% for option in quizQuestion.options %}
-        <label class="quiz-option">
-            <input type="radio" name="question-{{ quizQuestion.id }}" value="{{ option.key }}" {% if option.is_correct
-                %} data-correct="true" {% endif %}>
-            {{ option.key }}. {{ option.answer }}
-        </label>
-        {% endfor %}
-    </fieldset>
-    <div class="question-explanation-container">
-        <p class="question-explanation-correct">{{ quizQuestion.explanation_correct }}</p>
-        <p class="question-explanation-wrong">{{ quizQuestion.explanation_wrong }}</p>
-    </div>
-    <button class="next-btn">Volgende</button>
-</article>
-{% endfor %}{% endcomment %}

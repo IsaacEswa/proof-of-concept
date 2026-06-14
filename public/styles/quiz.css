@@ -169,11 +169,6 @@
     z-index: 0;
 }
 
-/* .quiz::before,
-.quiz::after {
-    display: none;
-} */
-
 .quiz.shifting::before {
     translate: 0 1.5em;
     rotate: 3deg;
