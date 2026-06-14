@@ -41,7 +41,7 @@
             transform-origin: top;
             transform: scaleY(0);
             animation: progress-line linear;
-            animation-timeline: view();
+            animation-timeline: scroll();
             animation-range: cover;
 
             @media (min-width: 768px) {
