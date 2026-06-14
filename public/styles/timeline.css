@@ -56,6 +56,7 @@
             overflow: hidden;
             padding-top: 5em;
             color: var(--tertiary-color);
+            align-items: start;
 
             @media (min-width: 768px) {
                 display: block;
@@ -73,6 +74,7 @@
                 justify-content: center;
                 align-items: center;
 
+                /* Mobile timeline dot */
                 &::after {
                     content: "";
                     position: absolute;
@@ -101,8 +103,9 @@
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: 3em;
-                    align-items: center;
+                    align-items: start;
 
+                    /* Desktop timeline dot */
                     &::before {
                         content: "";
                         position: absolute;
@@ -115,6 +118,10 @@
                         background-color: var(--tertiary-color);
                         border: 5px solid var(--primary-color);
                         z-index: 10;
+
+                        @media (min-width: 768px) {
+                            left: 50.1%;
+                        }
                     }
 
                 }
