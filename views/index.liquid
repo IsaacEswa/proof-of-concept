@@ -20,26 +20,43 @@
 </section>
 
 <section class="masterpiece-details">
+    <div class="left-side">
+        <time datetime="">{{ detail.period }}</time>
+        <h1>{{ detail.title }}</h1>
+        <p>{{ persons.first.last_name }}, {{ persons.first.first_name }}</p>
+        <a class="primary-button" href="#">Bekijk onze hele collectie</a>
+        <p>Objecttype</p>
+        <h3>{{ detail.object_type }}</h3>
+        <details>
+            <summary>
+                Meer details
+            </summary>
 
-    <time datetime="">{{ detail.period }}</time>
-    <h1>{{ detail.title }}</h1>
-    <p>{{ persons.first.last_name }}, {{ persons.first.first_name }}</p>
-    <a class="primary-button" href="#">Bekijk onze hele collectie</a>
-    <p>Objecttype</p>
-    <h3>{{ detail.object_type }}</h3>
-    <details>
-        <summary>
-            Meer details
-        </summary>
+            <h4>Maker(s)</h4>
+            <div>
+                {% for person in persons %}
+                <p>{{ person.last_name }}, {{ person.first_name }} ({{ person.birth_year }}-{{ person.death_year }})</p>
+                <p>{{ person.roles }}</p>
+                {% endfor %}
+            </div>
+        </details>
+    </div>
 
-        <h4>Maker(s)</h4>
-        <div>
-            {% for person in persons %}
-            <p>{{ person.last_name }}, {{ person.first_name }} ({{ person.birth_year }}-{{ person.death_year }})</p>
-            <p>{{ person.roles }}</p>
-            {% endfor %}
-        </div>
-    </details>
+    <div class="right-side">
+        {% if detail.is_on_display == true %}
+        <p class="displayed"><span class="on-display"></span>Nu te zien in het museum</p>
+        {% elsif detail.is_on_display == false %}
+        <p class="displayed"><span class="not-on-display"></span>Niet te zien in het museum</p>
+        {% endif %}
+
+        {% for content in detail.content_blocks %}
+        {% if content.block_type == 'heading' %}
+        <h3>{{ content.text }}</h3>
+        {% elsif content.block_type == 'paragraph' %}
+        <p>{{ content.text }}</p>
+        {% endif %}
+        {% endfor %}
+    </div>
 
 </section>
 
