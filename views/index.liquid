@@ -1,8 +1,7 @@
 {% render 'partials/head.liquid' %}
+{% for detail in details %}
 
 <section class="hero">
-    {% for detail in details %}
-
     {% if detail.cover %}
     <picture>
         <source type="image/avif"
@@ -18,8 +17,33 @@
     <img src="/assets/placeholder.jpg" alt="Geen afbeelding beschikbaar">
     {% endif %}
 
-    {% endfor %}
 </section>
+
+<section class="masterpiece-details">
+
+    <time datetime="">{{ detail.period }}</time>
+    <h1>{{ detail.title }}</h1>
+    <p>{{ persons.first.last_name }}, {{ persons.first.first_name }}</p>
+    <a class="primary-button" href="#">Bekijk onze hele collectie</a>
+    <p>Objecttype</p>
+    <h3>{{ detail.object_type }}</h3>
+    <details>
+        <summary>
+            Meer details
+        </summary>
+
+        <h4>Maker(s)</h4>
+        <div>
+            {% for person in persons %}
+            <p>{{ person.last_name }}, {{ person.first_name }} ({{ person.birth_year }}-{{ person.death_year }})</p>
+            <p>{{ person.roles }}</p>
+            {% endfor %}
+        </div>
+    </details>
+
+</section>
+
+{% endfor %}
 
 <section class="timeline">
     {% comment %} <h2 class="section-title">Timeline</h2> {% endcomment %}

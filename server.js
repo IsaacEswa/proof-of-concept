@@ -19,6 +19,7 @@ app.set('views', './views')
 
 const baseURL = 'https://fdnd-agency.directus.app/items/'
 const detailsURL = 'teylers_museum_exhibits'
+const personsURL = 'teylers_museum_persons'
 const sectionsURL = 'teylers_museum_exhibits_sections'
 const questionsURL = 'teylers_museum_quiz_questions'
 
@@ -36,6 +37,17 @@ app.get('/', async function (request, response) {
         baseURL + detailsURL + '?' + detailParams.toString()
     )
     const detailsJSON = await detailsResponse.json()
+
+    // PERSONS
+    const personParams = new URLSearchParams()
+    personParams.set(
+        'fields',
+        '*.*'
+    )
+    const personsResponse = await fetch(
+        baseURL + personsURL + '?' + personParams.toString()
+    )
+    const personsJSON = await personsResponse.json()
 
 
     // SECTIONS
@@ -83,6 +95,7 @@ app.get('/', async function (request, response) {
         selectedOption,
 
         details: detailsJSON.data,
+        persons: personsJSON.data,
     }
 
     console.log(detailsJSON.data)
