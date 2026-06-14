@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js');
+
 document.addEventListener('submit', async (event) => {
     const form = event.target.closest('.question-answer-form')
     if (!form) return

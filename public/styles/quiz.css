@@ -7,7 +7,7 @@
 }
 
 .quiz-component {
-    width: 90%;
+    width: 75%;
     background-color: var(--tertiary-color);
     padding: 2em 4em;
     display: flex;
@@ -137,21 +137,21 @@
 }
 
 /* fake stacked cards behind */
-.quiz::before,
-.quiz::after {
+.js .quiz::before,
+.js .quiz::after {
     content: '';
     position: absolute;
     top: 0;
-    width: 90%;
+    width: 80%;
     height: 90%;
     background-color: var(--tertiary-color);
     border: 2px solid var(--primary-color);
     transition: translate .3s ease, rotate .3s ease, opacity .3s ease;
 
     @media (min-width: 768px) {
-        width: 85%;
-        height: 85%;
-        top: 3%;
+        width: 75%;
+        height: 80%;
+        top: 5%;
     }
 }
 
@@ -168,6 +168,11 @@
     opacity: .2;
     z-index: 0;
 }
+
+/* .quiz::before,
+.quiz::after {
+    display: none;
+} */
 
 .quiz.shifting::before {
     translate: 0 1.5em;
