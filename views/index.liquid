@@ -21,15 +21,15 @@
 
 <section class="masterpiece-details">
     <div class="left-side">
-        <time datetime="">{{ detail.period }}</time>
+        <time datetime="{{ detail.period }}">{{ detail.period }}</time>
         <h1>{{ detail.title }}</h1>
-        <p>{{ persons.first.last_name }}, {{ persons.first.first_name }}</p>
+        <p class="creator">{{ persons.first.last_name }}, {{ persons.first.first_name }}</p>
         <a class="primary-button" href="#">Bekijk onze hele collectie</a>
         <p>Objecttype</p>
         <h3>{{ detail.object_type }}</h3>
         <details>
             <summary>
-                Meer details
+                details
             </summary>
 
             <h4>Maker(s)</h4>

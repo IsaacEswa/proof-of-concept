@@ -84,3 +84,82 @@ header {
     }
 
 }
+
+.masterpiece-details {
+    display: flex;
+    flex-direction: column;
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .primary-button {
+            width: fit-content;
+        }
+
+        details {
+            width: fit-content;
+
+
+            summary {
+                display: flex;
+                align-items: center;
+                gap: .25rem;
+                cursor: pointer;
+                color: var(--primary-color);
+                background-color: var(--tertiary-color);
+                transition: .2s ease;
+                width: fit-content;
+                padding: .5rem 1.5rem;
+                border: 1px solid var(--tertiary-color);
+
+
+                &::before {
+                    content: 'Meer';
+                }
+
+                &::after {
+                    content: '+';
+                }
+
+                &:hover {
+                    background-color: var(--primary-color);
+                    color: var(--tertiary-color);
+                    border: 1px solid var(--tertiary-color);
+
+                }
+            }
+
+            &[open] summary {
+                &::before {
+                    content: 'Minder';
+                }
+
+                &::after {
+                    content: '-';
+                }
+            }
+
+            /* &:hover {
+                background-color: var(--primary-color);
+                color: var(--tertiary-color);
+                border: 1px solid var(--tertiary-color);
+
+            } */
+        }
+
+
+        color: var(--tertiary-color);
+
+        time {
+            font-family: "Bitter", serif;
+            font-weight: 600;
+        }
+
+        .creator {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+
+        }
+    }
+}

@@ -110,10 +110,6 @@ function initStacked() {
     });
 }
 initStacked();
-
-
-
-// ################ DRAGGABLE CODE ################
 // const component = document.querySelector('.quiz-component');
 // component.classList.add('cards-stacked');
 // component.querySelectorAll('.single-quiz-question').forEach(q => q.classList.add('stacked'));
