@@ -14,7 +14,7 @@
         }
 
         /* timeline-line */
-        &&::before {
+        &::before {
             content: "";
             position: absolute;
             top: 0;
@@ -25,7 +25,6 @@
             opacity: .5;
 
             @media (min-width: 768px) {
-                /* display: none; */
                 left: 50%;
             }
         }
@@ -41,7 +40,7 @@
             transform-origin: top;
             transform: scaleY(0);
             animation: progress-line linear;
-            animation-timeline: scroll();
+            animation-timeline: view();
             animation-range: cover;
 
             @media (min-width: 768px) {
@@ -58,9 +57,17 @@
             color: var(--tertiary-color);
             align-items: start;
 
+            @media (prefers-reduced-motion: no-preference) {
+                .timeline-item {
+                    animation: fadeIn forwards;
+                    animation-timeline: view();
+                    animation-range: entry;
+                }
+            }
+
             @media (min-width: 768px) {
                 display: block;
-                padding-top: 5em;
+                /* padding-top: 5em; */
             }
 
             .timeline-year {
@@ -69,7 +76,6 @@
                 font-style: italic;
                 position: relative;
                 color: var(--secondary-color);
-
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -123,7 +129,6 @@
                             left: 50.1%;
                         }
                     }
-
                 }
 
 
@@ -140,36 +145,34 @@
 
                     .timeline-details {
                         summary {
-                            /* width: 100%; */
                             padding: .5em 0;
                             border-top: 1px solid var(--tertiary-color);
                             position: relative;
                             cursor: pointer;
                             list-style: none;
                         }
-                    }
 
-                    .timeline-details summary:after {
-                        content: "+";
-                        color: var(--tertiary-color);
-                        position: absolute;
-                        font-size: 2em;
-                        right: 0;
-                        top: 0;
-                        font-weight: 200;
-                        transform-origin: center;
-                        transition: .2s ease-in-out;
-                    }
+                        summary::after {
+                            content: "+";
+                            color: var(--tertiary-color);
+                            position: absolute;
+                            font-size: 2em;
+                            right: 0;
+                            top: 0;
+                            font-weight: 200;
+                            transform-origin: center;
+                            transition: .2s ease-in-out;
+                        }
 
-                    .timeline-details[open] summary:after {
-                        transform: rotate(45deg);
-                    }
+                        &[open] summary:after {
+                            transform: rotate(45deg);
+                        }
 
-                    .timeline-details[open] .timeline-details-content {
-                        animation: open .3s ease-in-out;
-                        opacity: 0.7;
-                        font-style: italic;
-
+                        &[open] .timeline-details-content {
+                            animation: open .3s ease-in-out;
+                            opacity: 0.7;
+                            font-style: italic;
+                        }
                     }
                 }
 
@@ -189,30 +192,22 @@
     }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .timeline-item {
-        animation: fadeIn forwards;
-        animation-timeline: view();
-        animation-range: entry;
-    }
-}
-
 @keyframes open {
-    0% {
+    from {
         opacity: 0;
     }
 
-    100% {
+    to {
         opacity: 0.7;
     }
 }
 
 @keyframes fadeIn {
-    0% {
+    from {
         opacity: 0;
     }
 
-    100% {
+    to {
         opacity: 1;
     }
 }

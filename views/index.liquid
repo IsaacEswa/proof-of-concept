@@ -11,12 +11,11 @@
             srcset="https://fdnd-agency.directus.app/assets/{{ detail.cover.id }}?fit=cover&format=webp&height=700&quality=80">
 
         <img src="https://fdnd-agency.directus.app/assets/{{ detail.cover }}?height=700&quality=80"
-            width="{{ detail.cover.width }}" height="{{ detail.cover.height }}" alt="">
+            width="{{ detail.cover.width }}" height="{{ detail.cover.height }}" alt="Afbeelding van {{ detail.title }}">
     </picture>
     {% else %}
     <img src="/assets/placeholder.jpg" alt="Geen afbeelding beschikbaar">
     {% endif %}
-
 </section>
 
 <section class="masterpiece-details">
@@ -25,8 +24,10 @@
         <h1>{{ detail.title }}</h1>
         <p class="creator">{{ persons.first.last_name }}, {{ persons.first.first_name }}</p>
         <a class="primary-button" href="#">Bekijk onze hele collectie</a>
-        <p>Objecttype</p>
-        <h3>{{ detail.object_type }}</h3>
+        <dl>
+            <dt>Objecttype</dt>
+            <dd>{{ detail.object_type }}</dd>
+        </dl>
         <details>
             <summary>
                 details
@@ -63,7 +64,7 @@
 {% endfor %}
 
 <section class="timeline">
-    {% comment %} <h2 class="section-title">Timeline</h2> {% endcomment %}
+    <h2 class="section-title">Timeline</h2>
     {% render 'partials/timeline-component.liquid', sections: sections %}
 
 </section>

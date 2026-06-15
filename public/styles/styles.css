@@ -76,7 +76,7 @@ header {
     justify-content: center;
     align-items: center;
     background-color: var(--tertiary-color);
-
+    overflow-x: hidden;
 
     img {
         width: 40em;
@@ -88,6 +88,7 @@ header {
 .masterpiece-details {
     display: flex;
     flex-direction: column;
+    color: var(--tertiary-color);
 
     .left-side {
         display: flex;
@@ -140,17 +141,7 @@ header {
                     content: '-';
                 }
             }
-
-            /* &:hover {
-                background-color: var(--primary-color);
-                color: var(--tertiary-color);
-                border: 1px solid var(--tertiary-color);
-
-            } */
         }
-
-
-        color: var(--tertiary-color);
 
         time {
             font-family: "Bitter", serif;
@@ -159,7 +150,6 @@ header {
 
         .creator {
             font-size: clamp(1.25rem, 3vw, 1.5rem);
-
         }
     }
 }

@@ -2,37 +2,29 @@
 
     {% for section in sections %}
     <div class="timeline-item">
-
         <time class="timeline-year" datetime="{{ section.start_year }}">{{ section.start_year }}</time>
         <article class="timeline-article">
             <div class="timeline-article-content">
-                {% comment %} <time datetime="{{ timelineItem.start_year }}">{{ timelineItem.start_year }}</time>
-                {% endcomment %}
                 <p>{{ section.start_year }} - {{ section.end_year }}</p>
                 <h3 class="timeline-title">{{ section.title }}</h3>
                 <p class="timeline-summary">{{ section.summary }}</p>
-
                 <details class="timeline-details">
                     <summary>Lees meer</summary>
                     <div class="timeline-details-content">
                         {% for block in section.content_blocks %}
-
                         {% if block.block_type == 'heading' %}
                         <h4>{{ block.text }}</h4>
                         <br>
                         {% elsif block.block_type == 'paragraph' %}
                         <p>{{ block.text }}</p>
                         <br>
-
                         {% elsif block.block_type == 'quote' %}
                         <p><strong>{{ block.text }}</strong></p>
                         <br>
-
                         {% endif %}
                         {% endfor %}
                     </div>
                 </details>
-
             </div>
 
             <div class="timeline-article-image">
