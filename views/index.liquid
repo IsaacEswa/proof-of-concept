@@ -68,12 +68,13 @@
 
 </section>
 
-
-<section class="quiz">
-    {% comment %} <h2 class="section-title">Quiz</h2> {% endcomment %}
-    {% render 'partials/quiz-component.liquid', sections: sections, answered: answered, correct: correct, step: step,
-    screen: screen, question: question, correctOption: correctOption, answerKey: answerKey,
-    selectedOption: selectedOption %}
+<section>
+    <h2 class="div-title">Quiz</h2>
+    <div class="quiz-wrapper">
+        {% render 'partials/quiz-component.liquid', sections: sections, answered: answered, correct: correct, step:
+        step,
+        screen: screen, question: question, correctOption: correctOption, answerKey: answerKey,
+        selectedOption: selectedOption %}
 </section>
 
 {% render 'partials/foot.liquid' %}

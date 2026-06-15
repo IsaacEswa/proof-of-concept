@@ -1,4 +1,4 @@
-.quiz {
+.quiz-wrapper {
     display: grid;
     place-items: center;
     overflow-x: clip;
@@ -136,45 +136,45 @@
 
 
 /* fake stacked cards behind */
-.js .quiz::before,
-.js .quiz::after {
+.js .quiz-wrapper::before,
+.js .quiz-wrapper::after {
     content: '';
     position: absolute;
-    top: 0;
+    top: -3%;
     width: 80%;
-    height: 90%;
+    height: 100%;
     background-color: var(--tertiary-color);
     border: 2px solid var(--primary-color);
     transition: translate .3s ease, rotate .3s ease, opacity .3s ease;
 
     @media (min-width: 768px) {
-        width: 75%;
-        height: 80%;
-        top: 5%;
+        /* width: 80%;
+        height: 100%; */
+        top: -4%;
     }
 }
 
-.quiz::before {
+.quiz-wrapper::before {
     translate: 0 .75em;
-    rotate: 2deg;
+    rotate: 5deg;
     opacity: .5;
     z-index: 1;
 }
 
-.quiz::after {
+.quiz-wrapper::after {
     translate: 0 1.5em;
-    rotate: -3deg;
+    rotate: 10deg;
     opacity: .2;
     z-index: 0;
 }
 
-.quiz.shifting::before {
+.quiz-wrapper.shifting::before {
     translate: 0 1.5em;
     rotate: 3deg;
     opacity: .35;
 }
 
-.quiz.shifting::after {
+.quiz-wrapper.shifting::after {
     translate: 0 .75em;
     rotate: -1deg;
     opacity: .5;

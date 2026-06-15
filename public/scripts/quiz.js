@@ -40,7 +40,7 @@ document.addEventListener('click', async (event) => {
 
 async function swapQuiz(newQuiz, animateDirection = 'right') {
     const currentQuiz = document.querySelector('.quiz-component')
-    const quizWrapper = document.querySelector('.quiz')
+    const quizWrapper = document.querySelector('.quiz-wrapper')
     if (!newQuiz || !currentQuiz) return
 
     if (!document.startViewTransition) {
