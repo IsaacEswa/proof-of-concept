@@ -63,18 +63,19 @@
 {% endfor %}
 
 <section class="timeline">
-    <h2 class="section-title">Timeline</h2>
+    <h2 class="section-title">Bekijk de tijdlijn</h2>
     {% render 'partials/timeline-component.liquid', sections: sections %}
 
 </section>
 
 <section>
-    <h2 class="div-title">Quiz</h2>
+    <h2 class="section-title">Test je kennis</h2>
     <div class="quiz-wrapper">
         {% render 'partials/quiz-component.liquid', sections: sections, answered: answered, correct: correct, step:
         step,
         screen: screen, question: question, correctOption: correctOption, answerKey: answerKey,
         selectedOption: selectedOption %}
+    </div>
 </section>
 
 {% render 'partials/foot.liquid' %}

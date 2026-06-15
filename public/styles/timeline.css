@@ -53,9 +53,12 @@
             grid-template-columns: 20% 80%;
             column-gap: 1em;
             overflow: hidden;
-            padding-top: 5em;
             color: var(--tertiary-color);
             align-items: start;
+
+            &:not(:first-child) {
+                padding-top: 5em;
+            }
 
             @media (prefers-reduced-motion: no-preference) {
                 .timeline-item {
