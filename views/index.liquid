@@ -1,6 +1,6 @@
 {% render 'partials/head.liquid' %}
-{% for detail in details %}
 
+{% for detail in details %}
 <section class="hero">
     {% if detail.cover %}
     <picture>
@@ -60,7 +60,6 @@
     </div>
 
 </section>
-
 {% endfor %}
 
 <section class="timeline">
@@ -71,7 +70,7 @@
 
 
 <section class="quiz">
-    {% comment %} <h2>Quiz</h2> {% endcomment %}
+    {% comment %} <h2 class="section-title">Quiz</h2> {% endcomment %}
     {% render 'partials/quiz-component.liquid', sections: sections, answered: answered, correct: correct, step: step,
     screen: screen, question: question, correctOption: correctOption, answerKey: answerKey,
     selectedOption: selectedOption %}

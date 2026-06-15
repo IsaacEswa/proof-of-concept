@@ -71,6 +71,12 @@ header {
     }
 }
 
+.section-title {
+    color: var(--tertiary-color);
+    text-align: center;
+    padding-bottom: 1em;
+}
+
 .hero {
     display: flex;
     justify-content: center;
