@@ -75,6 +75,11 @@ header {
     color: var(--tertiary-color);
     text-align: center;
     padding-bottom: 2em;
+
+    @media (min-width: 768px) {
+        padding-bottom: 3em;
+
+    }
 }
 
 .hero {

@@ -184,25 +184,21 @@
     }
 }
 
-.quiz-wrapper.shifting::before {
-    /* translate: -.3em 0; */
+/* .quiz-wrapper.shifting::before {
     rotate: 4deg;
-    /* opacity: .35; */
 }
 
 .quiz-wrapper.shifting::after {
-    /* translate: .5em 0; */
     rotate: 6deg;
-    /* opacity: .5; */
-}
+} */
 
-::view-transition-old(quiz-component) {
+/* ::view-transition-old(quiz-component) {
     animation: card-exit-right .5s ease forwards;
 }
 
 ::view-transition-new(quiz-component) {
     animation: card-enter .5s ease forwards;
-}
+} */
 
 @keyframes card-exit-right {
     to {
@@ -218,5 +214,23 @@
         opacity: 0;
         /* translate: -10% 0; */
         scale: .75;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .quiz-wrapper.shifting::before {
+        rotate: 4deg;
+    }
+
+    .quiz-wrapper.shifting::after {
+        rotate: 6deg;
+    }
+
+    ::view-transition-old(quiz-component) {
+        animation: card-exit-right .5s ease forwards;
+    }
+
+    ::view-transition-new(quiz-component) {
+        animation: card-enter .5s ease forwards;
     }
 }
