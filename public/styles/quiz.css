@@ -74,7 +74,7 @@
                 }
 
                 .quiz-option:has(input:user-invalid) {
-                    border: 1px solid #E06868;
+                    border: 2px dashed #E06868;
                 }
 
                 .quiz-option input[type="radio"] {
