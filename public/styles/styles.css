@@ -78,17 +78,16 @@ header {
     align-items: center;
     background-color: var(--tertiary-color);
     overflow-x: hidden;
+    padding: 0;
 
     img {
         width: 40em;
         height: 100%;
 
         @media (min-width: 768px) {
-            width: 50em;
+            width: 60em;
         }
-
     }
-
 }
 
 .masterpiece-details {
