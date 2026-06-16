@@ -37,7 +37,10 @@
             {% else %}
             <p>{{ question.explanation_wrong }}</p>
             {% endif %}
-            <a href="">Lees meer</a>
+            {% assign related_section = sections | where: "id", question.exhibit_section | first %}
+            <a href="#{{ related_section.slug }}">
+                Lees meer
+            </a>
         </div>
 
         {% assign last = sections.size | minus: 1 %}

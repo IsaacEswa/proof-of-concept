@@ -1,6 +1,7 @@
 {% render 'partials/head.liquid' %}
 
-{% comment %} {% for detail in details %}
+
+{% for detail in details %}
 <section class="hero">
     {% if detail.cover %}
     <picture>
@@ -66,7 +67,7 @@
     <h2 class="section-title">Bekijk de tijdlijn</h2>
     {% render 'partials/timeline-component.liquid', sections: sections %}
 
-</section> {% endcomment %}
+</section>
 
 <section>
     <h2 class="section-title">Test je kennis</h2>

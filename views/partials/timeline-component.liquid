@@ -1,7 +1,7 @@
 <div class="timeline-component">
 
     {% for section in sections %}
-    <div class="timeline-item">
+    <div id="{{ section.slug }}" class="timeline-item">
         <time class="timeline-year" datetime="{{ section.start_year }}">{{ section.start_year }}</time>
         <article class="timeline-article">
             <div class="timeline-article-content">
