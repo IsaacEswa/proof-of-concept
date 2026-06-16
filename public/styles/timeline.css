@@ -60,17 +60,8 @@
                 padding-top: 5em;
             }
 
-            /* @media (prefers-reduced-motion: no-preference) {
-                .timeline-item {
-                    animation: fadeIn forwards;
-                    animation-timeline: view();
-                    animation-range: entry;
-                }
-            } */
-
             @media (min-width: 768px) {
                 display: block;
-                /* padding-top: 5em; */
             }
 
             .timeline-year {

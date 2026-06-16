@@ -22,9 +22,11 @@ const detailsURL = 'teylers_museum_exhibits'
 const personsURL = 'teylers_museum_persons'
 const sectionsURL = 'teylers_museum_exhibits_sections'
 const questionsURL = 'teylers_museum_quiz_questions'
+const answersURL = 'teylers_museum_quiz_answers'
+const attemptsURL = 'teylers_museum_quiz_attempts'
 
 app.get('/', async function (request, response) {
-    const { answered, correct, step, screen = 'question', questionId, answerKey } = request.query
+    const { answered, correct, step, screen = 'question', questionId, answerKey, attemptId } = request.query
     const currentStep = Number(step ?? 0)
 
     // DETAILS
@@ -83,6 +85,33 @@ app.get('/', async function (request, response) {
         )
     }
 
+    let score = null
+    let totalQuestions = null
+
+    if (screen === 'score' && attemptId) {
+        const answersParams = new URLSearchParams()
+        answersParams.set('filter', JSON.stringify({ attempt: { _eq: attemptId } }))
+        answersParams.set('fields', 'is_correct')
+
+        const answersResponse = await fetch(
+            baseURL + answersURL + '?' + answersParams.toString()
+        )
+        const answersJSON = await answersResponse.json()
+
+        score = answersJSON.data.filter(a => a.is_correct).length
+        totalQuestions = sectionsJSON.data.length
+
+        await fetch(baseURL + attemptsURL + '/' + attemptId, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                score,
+                total_questions: totalQuestions,
+                completed_at: new Date().toISOString()
+            })
+        })
+    }
+
     const data = {
         sections: sectionsJSON.data,
         step: currentStep,
@@ -93,12 +122,15 @@ app.get('/', async function (request, response) {
         correctOption,
         answerKey,
         selectedOption,
+        attemptId,
+        score,
+        totalQuestions,
 
         details: detailsJSON.data,
         persons: personsJSON.data,
     }
 
-    console.log(detailsJSON.data)
+    // console.log(detailsJSON.data)
 
 
     response.render('index.liquid', data)
@@ -106,6 +138,19 @@ app.get('/', async function (request, response) {
 
 app.post('/quiz/answer', async (request, response) => {
     const { questionId, answerKey, step } = request.body
+    let attemptId = request.body.attemptId
+
+    if (!attemptId) {
+        const attemptResponse = await fetch(baseURL + attemptsURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                started_at: new Date().toISOString()
+            })
+        })
+        const attemptJSON = await attemptResponse.json()
+        attemptId = attemptJSON.data.id
+    }
 
     const questionParams = new URLSearchParams()
     questionParams.set('fields', '*,options.*')
@@ -123,13 +168,13 @@ app.post('/quiz/answer', async (request, response) => {
 
     const isCorrect = selectedOption?.is_correct === true
 
-    await fetch(baseURL + 'quiz_answers', {
+    await fetch(baseURL + answersURL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            attempt: 2, // tijdelijk hardcoded
+            attempt: attemptId,
             question: questionId,
             chosen_option: answerKey,
             is_correct: isCorrect,
@@ -142,7 +187,8 @@ app.post('/quiz/answer', async (request, response) => {
         '&step=' + step +
         '&questionId=' + questionId +
         '&answerKey=' + answerKey +
-        '&correct=' + isCorrect
+        '&correct=' + isCorrect +
+        '&attemptId=' + attemptId
     )
 })
 
