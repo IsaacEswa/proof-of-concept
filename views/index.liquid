@@ -23,30 +23,33 @@
     <div class="left-side">
         <time datetime="{{ detail.period }}">{{ detail.period }}</time>
         <h1>{{ detail.title }}</h1>
-        <p class="creator">{{ persons.first.last_name }}, {{ persons.first.first_name }}</p>
+        <h2 class="creator">{{ persons.first.last_name }}, {{ persons.first.first_name }}</h2>
         <a class="primary-button" href="#">Bekijk onze hele collectie</a>
         <dl>
             <dt>Objecttype</dt>
-            <dd>{{ detail.object_type }}</dd>
+            <dd class="objecttype">{{ detail.object_type }}</dd>
         </dl>
         <details>
             <summary>
                 details
             </summary>
 
-            <h4>Maker(s)</h4>
-            <div>
+            <p>Maker(s)</p>
+            <dl>
                 {% for person in persons %}
-                <p>{{ person.last_name }}, {{ person.first_name }} ({{ person.birth_year }}-{{ person.death_year }})</p>
-                <p>{{ person.roles }}</p>
+                <dt>{{ person.last_name }}, {{ person.first_name }} ({{ person.birth_year }}-{{
+                    person.death_year }})</dt>
+                <dd>{{ person.roles | capitalize }}</dd>
                 {% endfor %}
-            </div>
+            </dl>
         </details>
     </div>
 
     <div class="right-side">
         {% if detail.is_on_display == true %}
-        <p class="displayed"><span class="on-display"></span>Nu te zien in het museum</p>
+        <p class="displayed">
+            <span class="on-display"></span>Nu te zien in het museum
+        </p>
         {% elsif detail.is_on_display == false %}
         <p class="displayed"><span class="not-on-display"></span>Niet te zien in het museum</p>
         {% endif %}

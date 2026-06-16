@@ -71,17 +71,6 @@ header {
     }
 }
 
-.section-title {
-    color: var(--tertiary-color);
-    text-align: center;
-    padding-bottom: 2em;
-
-    @media (min-width: 768px) {
-        padding-bottom: 3em;
-
-    }
-}
-
 .hero {
     display: flex;
     justify-content: center;
@@ -92,6 +81,11 @@ header {
     img {
         width: 40em;
         height: 100%;
+
+        @media (min-width: 768px) {
+            width: 50em;
+        }
+
     }
 
 }
@@ -105,6 +99,7 @@ header {
         display: flex;
         flex-direction: column;
         gap: 1em;
+        width: 100%;
 
         .primary-button {
             width: fit-content;
@@ -112,7 +107,6 @@ header {
 
         details {
             width: fit-content;
-
 
             summary {
                 display: flex;
@@ -143,6 +137,17 @@ header {
                 }
             }
 
+            dt,
+            dd {
+                font-weight: 600;
+                font-family: "Bitter", serif;
+            }
+
+            dd {
+                padding-bottom: 1em;
+            }
+
+
             &[open] summary {
                 &::before {
                     content: 'Minder';
@@ -151,6 +156,8 @@ header {
                 &::after {
                     content: '-';
                 }
+
+                margin-bottom: 1em;
             }
         }
 
@@ -161,6 +168,67 @@ header {
 
         .creator {
             font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-family: Inter, sans-serif;
+            font-weight: 400;
         }
+
+        .objecttype {
+            font-family: Bitter, serif;
+            font-weight: 600;
+        }
+    }
+
+    .right-side {
+        padding-top: 3em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        width: 100%;
+
+
+        .displayed {
+            /* padding-block: 1rem; */
+            display: flex;
+            gap: .5em;
+            align-items: center;
+
+            span {
+                content: '';
+                display: block;
+                width: 1rem;
+                height: 1rem;
+                border-radius: 50%;
+                animation: breathe 2s ease-in-out infinite;
+            }
+
+            .on-display {
+                background-color: #79EAAA;
+            }
+
+            .not-on-display {
+                background-color: #E06868;
+            }
+        }
+
+        @media (min-width: 768px) {
+            padding: 0;
+        }
+
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 3em;
+    }
+}
+
+.section-title {
+    color: var(--tertiary-color);
+    text-align: center;
+    padding-bottom: 2em;
+
+    @media (min-width: 768px) {
+        padding-bottom: 3em;
+
     }
 }
