@@ -248,7 +248,7 @@ footer {
 
         h2 {
             padding-bottom: .5em;
-            font-size: 1rem;
+            font-size: 1.25rem;
         }
 
         @media (min-width: 768px) {
@@ -265,6 +265,11 @@ footer {
     .footer-col-02 {
         dt {
             font-weight: 600;
+
+            &:not(:first-of-type) {
+                font-weight: 600;
+                padding-top: 1em;
+            }
         }
     }
 
