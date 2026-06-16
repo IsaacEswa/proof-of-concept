@@ -10,7 +10,7 @@
         </svg>
         <h3 class="score-result">Jouw score: {{ score }}/{{ totalQuestions }}</h3>
         <p>Goed gedaan, je bent klaar met de quiz! Je kan het altijd nog een keer proberen.</p>
-        <a class="primary-button quiz-btn" href="/">
+        <a class="secondary-button quiz-btn" href="/">
             Herstart
         </a>
     </div>
@@ -44,7 +44,7 @@
         </div>
 
         {% assign last = sections.size | minus: 1 %}
-        <a class="primary-button quiz-btn next-question"
+        <a class="secondary-button quiz-btn next-question"
             href="{% if step >= last %}/?screen=score&attemptId={{ attemptId }}{% else %}/?step={{ step | plus: 1 }}&attemptId={{ attemptId }}{% endif %}">
             Volgende
         </a>
@@ -77,7 +77,7 @@
                 {% endfor %}
             </fieldset>
 
-            <button class="primary-button quiz-btn" type="submit">
+            <button class="secondary-button quiz-btn" type="submit">
                 Controleren
             </button>
         </form>

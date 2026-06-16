@@ -75,19 +75,41 @@ strong {
     font-weight: 600;
 }
 
-.primary-button {
+.primary-button,
+.secondary-button {
     font-size: 1rem;
     padding: .5em 1.2em;
-    background-color: var(--secondary-color);
-    color: black;
     border: none;
     cursor: pointer;
     text-decoration: none;
     transition: .2s;
+}
+
+.primary-button {
+    /* font-size: 1rem; */
+    /* padding: .5em 1.2em; */
+    background-color: var(--secondary-color);
+    color: black;
+    /* border: none; */
+    /* cursor: pointer; */
+    /* text-decoration: none; */
+    /* transition: .2s; */
 
     &:hover {
         scale: 0.97;
         background-color: #d6a700;
+
+    }
+}
+
+.secondary-button {
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+
+
+    &:hover {
+        scale: 0.97;
+        background-color: #0d262c;
 
     }
 }
