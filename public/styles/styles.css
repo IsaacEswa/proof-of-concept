@@ -64,9 +64,10 @@ header {
 
     svg {
         transition: .3s ease;
+        cursor: pointer;
 
         &:hover {
-            scale: 1.2;
+            scale: .8;
         }
     }
 }
@@ -233,4 +234,98 @@ header {
     }
 }
 
-footer {}
+footer {
+    padding: 3em 15px;
+    color: var(--tertiary-color);
+    fill: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3em;
+
+    section {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        h2 {
+            padding-bottom: .5em;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            padding: 0;
+        }
+    }
+
+    .footer-col-01 {
+        img {
+            width: 150px;
+        }
+    }
+
+    .footer-col-02 {
+        dt {
+            font-weight: 600;
+        }
+    }
+
+    .footer-col-03 {
+        .socials {
+            display: flex;
+            flex-direction: row;
+            gap: .5em;
+
+            svg {
+                background-color: var(--tertiary-color);
+                border-radius: 50%;
+                width: 2em;
+                height: 2em;
+                padding: .25em;
+                transition: .3s ease;
+                cursor: pointer;
+
+                &:hover {
+                    scale: .8;
+                }
+
+
+            }
+        }
+    }
+
+    .footer-col-04 {
+        .newsletter-form {
+            display: flex;
+            width: 100%;
+            gap: .5em;
+            flex-direction: column;
+
+            .email-field {
+                flex: 1;
+            }
+
+            input {
+                width: 100%;
+                background: none;
+                padding: 1em;
+                padding-left: 0;
+                outline: none;
+                border: none;
+                border-bottom: 1px solid var(--tertiary-color);
+            }
+
+            button {
+                width: fit-content;
+            }
+
+            @media (min-width: 768px) {
+                flex-direction: column;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
