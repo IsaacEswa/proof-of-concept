@@ -11,7 +11,7 @@
         <source type="image/webp"
             srcset="https://fdnd-agency.directus.app/assets/{{ detail.cover.id }}?fit=cover&format=webp&height=700&quality=80">
 
-        <img src="https://fdnd-agency.directus.app/assets/{{ detail.cover }}?height=700&quality=80"
+        <img src="https://fdnd-agency.directus.app/assets/{{ detail.cover.id }}?height=700&quality=80"
             width="{{ detail.cover.width }}" height="{{ detail.cover.height }}" alt="Afbeelding van {{ detail.title }}">
     </picture>
     {% else %}
