@@ -56,7 +56,7 @@ app.get('/', async function (request, response) {
     const sectionParams = new URLSearchParams()
     sectionParams.set(
         'fields',
-        '*,questions.*,questions.options.*'
+        '*,questions.*,questions.options.*,cover.*'
     )
     const sectionsResponse = await fetch(
         baseURL + sectionsURL + '?' + sectionParams.toString()

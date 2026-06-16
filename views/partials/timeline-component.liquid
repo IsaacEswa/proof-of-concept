@@ -31,13 +31,14 @@
                 {% if section.cover %}
                 <picture>
                     <source type="image/avif"
-                        srcset="https://fdnd-agency.directus.app/assets/{{ section.cover }}?fit=cover&format=avif&height=700&quality=80">
+                        srcset="https://fdnd-agency.directus.app/assets/{{ section.cover.id }}?fit=cover&format=avif&height=700&quality=80">
 
                     <source type="image/webp"
-                        srcset="https://fdnd-agency.directus.app/assets/{{ section.cover }}?fit=cover&format=webp&height=700&quality=80">
+                        srcset="https://fdnd-agency.directus.app/assets/{{ section.cover.id }}?fit=cover&format=webp&height=700&quality=80">
 
-                    <img src="https://fdnd-agency.directus.app/assets/{{ section.cover }}?height=700&quality=80"
-                        width="{{ section.cover.width }}" height="{{ section.cover.height }}" alt="">
+                    <img src="https://fdnd-agency.directus.app/assets/{{ section.cover.id }}?height=700&quality=80"
+                        width="{{ section.cover.width }}" height="{{ section.cover.height }}"
+                        alt="Afbeelding van {{ section.title }}">
                 </picture>
                 {% else %}
                 <img src="/assets/placeholder.jpg" alt="Geen afbeelding beschikbaar">
