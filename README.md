@@ -89,6 +89,11 @@ Deze aanpak volgt het principe van Progressive Enhancement. Zonder client-side J
 * View Transitions API voor vloeiende state-overgangen tussen quiz-states.
 * Pointer Events API voor drag-interacties in stacked cards quiz.
 
+## Code conventies
+* De volledige codebase is geschreven in het Engels, inclusief class names, variabelen en templates.
+* Classes zijn opgebouwd vanuit component thinking, waarbij elke UI-onderdelen een eigen namespace heeft om conflicts te voorkomen.
+* Consistente en beschrijvende class names worden gebruikt in plaats van generieke utility-classes.
+* HTML, CSS en JavaScript volgen dezelfde naming conventions om de samenhang tussen lagen te behouden.
 
 # Installatie
 Om het project lokaal te gebruiken heb je Node.js nodig. Daarna kun je het project openen in een code-editor.
