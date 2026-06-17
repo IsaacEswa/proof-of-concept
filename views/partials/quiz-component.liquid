@@ -39,7 +39,7 @@
             {% endif %}
             {% assign related_section = sections | where: "id", question.exhibit_section | first %}
             <a href="#{{ related_section.slug }}">
-                Lees meer
+                Lees meer over {{ related_section.title }}
             </a>
         </div>
 
