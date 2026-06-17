@@ -84,6 +84,7 @@ https://github.com/user-attachments/assets/2f9526d7-7056-48ae-a435-b512cae3950e
 * Opgezet volgens **DRY-principe** met herbruikbare classes en [CSS variables](https://github.com/IsaacEswa/proof-of-concept/blob/main/public/styles/styleguide.css).
 * Moderne CSS features zoals :[`has()`](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L76-L78), [`:focus-visible`](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L89-L92) en [`:user-invalid`](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L76-L78).
 * Animaties volledig [CSS-driven](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L187-L219) (keyframes + scroll-driven animations via animation-timeline: view()).
+* Er is rekening gehouden met `prefers-reduced-motion` om gebruikers die minder animaties willen of kunnen verwerken een rustigere ervaring te bieden.
 
 ## JavaScript
 * JavaScript uitsluitend als enhancement layer (niet noodzakelijk voor core functionaliteit).
