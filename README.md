@@ -79,7 +79,7 @@ Deze aanpak volgt het principe van Progressive Enhancement. Zonder client-side J
 * **Mobile-first** responsive design, uitgebreid met media queries voor grotere schermen.
 * Gebruik van **CSS nesting** voor duidelijke component-structuur.
 * Opgezet volgens **DRY-principe** met herbruikbare classes en [CSS variables](https://github.com/IsaacEswa/proof-of-concept/blob/main/public/styles/styleguide.css).
-* Moderne CSS features zoals `:[has()](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L76-L78)`, `[:focus-visible](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L89-L92)` en `[:user-invalid](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L76-L78)`.
+* Moderne CSS features zoals :[`has()`](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L76-L78), [`:focus-visible`](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L89-L92) en [`:user-invalid`](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L76-L78).
 * Animaties volledig [CSS-driven](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L187-L219) (keyframes + scroll-driven animations via animation-timeline: view()).
 
 ## JavaScript
