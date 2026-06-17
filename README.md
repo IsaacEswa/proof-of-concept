@@ -16,6 +16,11 @@ De tijdlijncomponent laadt content dynamisch in vanuit een database (Directus), 
 
 Elk tijdlijnitem bevat een uitklapbaar `details`-element met aanvullende informatie. Wanneer een gebruiker dit opent, wordt de extra content zichtbaar met een vloeiende animatie. Tegelijkertijd animeert het bijbehorende icoon om visuele feedback te geven over de geopende of gesloten status van het item.
 
+### Performance & Progressive Enhancement
+De tijdlijncomponent is opgezet met **performance** en **schaalbaarheid** als uitgangspunt. Content wordt server-side gerenderd vanuit Directus, waardoor de basis direct toegankelijk is zonder JavaScript.
+Afbeeldingen worden ingeladen met het `picture`-element, wat zorgt voor kleinere bestanden en snellere laadtijden.
+https://github.com/IsaacEswa/proof-of-concept/blob/1ef41dd59e610682c28fa3e535e03cd446e9dd7b/views/partials/timeline-component.liquid#L31-L45
+
 ### Functionaliteiten
 * Dynamisch geladen content
 * Herbruikbaar voor verschillende museumobjecten
@@ -25,7 +30,13 @@ Elk tijdlijnitem bevat een uitklapbaar `details`-element met aanvullende informa
 * Visuele feedback via een animerend icoon
 * Geschikt voor zowel desktop als mobiel gebruik
 
+### Responsive preview
+https://github.com/user-attachments/assets/a171e74a-b621-4566-b493-c010b53ce56f
+
+[Bekijk issue](https://github.com/IsaacEswa/proof-of-concept/issues/4)
+
 ## Quiz component
+
 
 
 # Licentie
