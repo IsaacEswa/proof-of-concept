@@ -72,17 +72,15 @@ Deze aanpak volgt het principe van Progressive Enhancement. Zonder client-side J
 # (Technische) kenmerken
 ## HTML
 * Gebruik van semantische HTML zoals `headings`, `article`, `form`, `fieldset`, `legend`, `details` en `time`.
-* Toegankelijke interacties met native HTML controls als basis.
-* Keyboard support geïntegreerd (o.a. Enter-to-continue in quiz-flow).
-* Visuele states gekoppeld aan semantische structuur in plaats van alleen presentational classes.
+* Keyboard support geïntegreerd (o.a. Enter-to-continue in quiz)
+* Gebruik van server-side state handling met [`if` & `else`](https://github.com/IsaacEswa/proof-of-concept/blob/main/views/partials/quiz-component.liquid#L4) logica om verschillende states te tonen (zoals vraag, feedback en score in de quiz).
 
 ## CSS
-* Mobile-first responsive design, uitgebreid met media queries voor grotere schermen.
-* Gebruik van CSS nesting voor duidelijke component-structuur.
-* Opgezet volgens DRY-principe met herbruikbare classes en CSS variables (var(--color)).
-* Moderne CSS features zoals :has(), :focus-visible en :user-invalid.
-* Animaties volledig CSS-driven (keyframes + scroll-driven animations via animation-timeline: view()).
-* Layout en interactie deels CSS-only (details-element, stacked visuals, timeline structuur).
+* **Mobile-first** responsive design, uitgebreid met media queries voor grotere schermen.
+* Gebruik van **CSS nesting** voor duidelijke component-structuur.
+* Opgezet volgens **DRY-principe** met herbruikbare classes en [CSS variables](https://github.com/IsaacEswa/proof-of-concept/blob/main/public/styles/styleguide.css).
+* Moderne CSS features zoals `:[has()](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L76-L78)`, `[:focus-visible](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L89-L92)` en `[:user-invalid](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L76-L78)`.
+* Animaties volledig [CSS-driven](https://github.com/IsaacEswa/proof-of-concept/blob/3f8b17acf8e2acf68b1ca2cc064d4b34ad1eb03b/public/styles/quiz.css#L187-L219) (keyframes + scroll-driven animations via animation-timeline: view()).
 
 ## JavaScript
 * JavaScript uitsluitend als enhancement layer (niet noodzakelijk voor core functionaliteit).
