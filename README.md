@@ -11,7 +11,7 @@ Bekijk [hier](https://proof-of-concept-vdfp.onrender.com) mijn live website
 # Inhoudsopgave
 
 # Gebruik
-## Tijdlijn component
+## Tijdlijn
 De tijdlijncomponent laadt content dynamisch in vanuit een database (Directus), waardoor deze eenvoudig kan worden hergebruikt voor andere museumobjecten en musea. De tijdlijn bestaat uit tijdlijn items die automatisch op chronologische volgorde worden weergegeven.
 
 Elk tijdlijnitem bevat een uitklapbaar `details`-element met aanvullende informatie. Wanneer een gebruiker dit opent, wordt de extra content zichtbaar met een vloeiende animatie. Tegelijkertijd animeert het bijbehorende icoon om visuele feedback te geven over de geopende of gesloten status van het item.
@@ -35,8 +35,11 @@ https://github.com/user-attachments/assets/a171e74a-b621-4566-b493-c010b53ce56f
 
 [Bekijk issue](https://github.com/IsaacEswa/proof-of-concept/issues/4)
 
-## Quiz component
+## Quiz
+De quizcomponent laadt vragen dynamisch in vanuit Directus en is gekoppeld aan de tijdlijn. Hierdoor kunnen vragen eenvoudig worden aangepast of hergebruikt voor andere museumobjecten.
+De quiz begeleidt gebruikers stap voor stap door de vragen. Na het beantwoorden ontvangt de gebruiker feedback met een uitleg waarom het antwoord goed of fout is. Daarnaast wordt een link aangeboden naar het bijbehorende tijdlijnitem, zodat gebruikers meer context kunnen ontdekken.
 
+Tijdens het beantwoorden van de quiz wordt gebruikgemaakt van een **stacked cards-animatie**. Wanneer een gebruiker op Controleren klikt of doorgaat naar de volgende vraag, schuift de huidige kaart weg en verschijnt de volgende kaart vanuit de stapel. Dit zorgt voor een speelse en vloeiende gebruikerservaring.
 
 
 # Licentie
