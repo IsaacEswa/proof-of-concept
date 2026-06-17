@@ -96,7 +96,6 @@ https://github.com/user-attachments/assets/2f9526d7-7056-48ae-a435-b512cae3950e
 ## Code conventies
 * De volledige codebase is geschreven in het Engels, inclusief class names, variabelen en templates.
 * Classes zijn opgebouwd vanuit component thinking, waarbij elke UI-onderdelen een eigen namespace heeft om conflicts te voorkomen.
-* Consistente en beschrijvende class names worden gebruikt in plaats van generieke utility-classes.
 * HTML, CSS en JavaScript volgen dezelfde naming conventions om de samenhang tussen lagen te behouden.
 
 # Installatie
