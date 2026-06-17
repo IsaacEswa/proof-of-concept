@@ -41,6 +41,55 @@ De quiz begeleidt gebruikers stap voor stap door de vragen. Na het beantwoorden 
 
 Tijdens het beantwoorden van de quiz wordt gebruikgemaakt van een **stacked cards-animatie**. Wanneer een gebruiker op Controleren klikt of doorgaat naar de volgende vraag, schuift de huidige kaart weg en verschijnt de volgende kaart vanuit de stapel. Dit zorgt voor een speelse en vloeiende gebruikerservaring.
 
+### Performance & Progressive Enhancement
+De quizcomponent is opgezet met performance en toegankelijkheid als uitgangspunt. De formulieren worden server-side verwerkt, waardoor de volledige quiz functioneert zonder JavaScript. Hierdoor blijft de ervaring betrouwbaar en toegankelijk op alle apparaten.
+
+### Functionaliteiten
+* Dynamisch geladen quizvragen
+* Gekoppeld aan tijdlijnitems
+* Directe feedback op antwoorden
+* Uitleg bij correcte en incorrecte antwoorden
+* Link naar gerelateerde tijdlijnitems
+* Stacked cards-animatie tussen quizstappen
+* Eindscore na afronding van de quiz
+* Herbruikbaar voor verschillende museumobjecten
+* Geschikt voor zowel desktop als mobiel gebruik
+* Werkt zonder JavaScript dankzij server-side verwerking van formulieren
+
+### Quiz preview
+https://github.com/user-attachments/assets/fe9bcff2-af62-40ca-9cde-5e4b2b2f0406
+
+### Ontwerpkeuzes
+Een eerdere versie van de quiz maakte gebruik van volledig interactieve kaarten die gebruikers moesten oppakken en slepen om naar de volgende vraag te gaan. Hoewel dit speels was, bleek het minder gebruiksvriendelijk omdat de interactie niet direct duidelijk was en extra handelingen vereiste.
+
+Daarom is gekozen voor een meer toegankelijke oplossing waarbij gebruikers antwoorden controleren met een knop. De stacked cards-animatie is behouden als visuele feedback, waardoor de speelse ervaring blijft bestaan zonder de gebruiksvriendelijkheid te verminderen.
+
+Deze aanpak volgt het principe van Progressive Enhancement. Zonder client-side JavaScript worden alle vragen onder elkaar weergegeven en blijft de quiz volledig bruikbaar. Wanneer JavaScript beschikbaar is, worden de vragen gepresenteerd als een stapel kaarten met extra animaties en interacties. Hierdoor krijgt iedere gebruiker toegang tot de inhoud, terwijl moderne browsers een rijkere ervaring ontvangen.
+
+* Bekijk [issue](https://github.com/IsaacEswa/proof-of-concept/issues/14)
+* Bekijk [branche](https://github.com/IsaacEswa/proof-of-concept/tree/14-backup-draggable-pe-quiz-cards)
+
+# (Technische) kenmerken
+## HTML
+* Gebruik van semantische HTML zoals `headings`, `article`, `form`, `fieldset`, `legend`, `details` en `time`.
+* Toegankelijke interacties met native HTML controls als basis.
+* Keyboard support geïntegreerd (o.a. Enter-to-continue in quiz-flow).
+* Visuele states gekoppeld aan semantische structuur in plaats van alleen presentational classes.
+
+## CSS
+* Mobile-first responsive design, uitgebreid met media queries voor grotere schermen.
+* Gebruik van CSS nesting voor duidelijke component-structuur.
+* Opgezet volgens DRY-principe met herbruikbare classes en CSS variables (var(--color)).
+* Moderne CSS features zoals :has(), :focus-visible en :user-invalid.
+* Animaties volledig CSS-driven (keyframes + scroll-driven animations via animation-timeline: view()).
+* Layout en interactie deels CSS-only (details-element, stacked visuals, timeline structuur).
+
+## JavaScript
+* JavaScript uitsluitend als enhancement layer (niet noodzakelijk voor core functionaliteit).
+* Asynchrone interacties via fetch() zonder volledige page reloads.
+* DOM-updates via DOMParser en component swapping i.p.v. full refresh.
+* View Transitions API voor vloeiende state-overgangen tussen quiz-states.
+* Pointer Events API voor drag-interacties in stacked cards quiz.
 
 # Licentie
 This project is licensed under the terms of the [MIT license](./LICENSE).
