@@ -66,6 +66,9 @@ Daarom is gekozen voor een meer toegankelijke oplossing waarbij gebruikers antwo
 
 Deze aanpak volgt het principe van Progressive Enhancement. Zonder client-side JavaScript worden alle vragen onder elkaar weergegeven en blijft de quiz volledig bruikbaar. Wanneer JavaScript beschikbaar is, worden de vragen gepresenteerd als een stapel kaarten met extra animaties en interacties. Hierdoor krijgt iedere gebruiker toegang tot de inhoud, terwijl moderne browsers een rijkere ervaring ontvangen.
 
+### Oude quiz preview
+https://github.com/user-attachments/assets/2f9526d7-7056-48ae-a435-b512cae3950e
+
 * Bekijk [issue](https://github.com/IsaacEswa/proof-of-concept/issues/14)
 * Bekijk [branche](https://github.com/IsaacEswa/proof-of-concept/tree/14-backup-draggable-pe-quiz-cards)
 
