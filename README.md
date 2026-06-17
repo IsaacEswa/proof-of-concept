@@ -89,5 +89,19 @@ Deze aanpak volgt het principe van Progressive Enhancement. Zonder client-side J
 * View Transitions API voor vloeiende state-overgangen tussen quiz-states.
 * Pointer Events API voor drag-interacties in stacked cards quiz.
 
+
+# Installatie
+Om het project lokaal te gebruiken heb je Node.js nodig. Daarna kun je het project openen in een code-editor.
+
+1. Installeer de benodigde pakketten:
+   ```bash
+   npm install
+2. Start de server:
+   ```bash
+   npm start
+3. Bekijk het project in je browser via:
+   ```bash
+   http://localhost:8000
+
 # Licentie
 This project is licensed under the terms of the [MIT license](./LICENSE).
