@@ -11,6 +11,19 @@ Bekijk [hier](https://proof-of-concept-vdfp.onrender.com) mijn live website
 
 # Inhoudsopgave
 
+- [Wie is Q42](#wie-is-q42)
+- [Klantvraag](#klantvraag)
+- [Gebruik](#gebruik)
+  - [Tijdlijn](#tijdlijn)
+  - [Quiz](#quiz)
+- [(Technische) kenmerken van de website](#technische-kenmerken-van-de-website)
+  - [HTML](#html)
+  - [CSS](#css)
+  - [JavaScript](#javascript)
+  - [Code conventies](#code-conventies)
+- [Installatie](#installatie)
+- [Licentie](#licentie)
+
 # Gebruik
 De detailpagina bestaat uit twee centrale componenten: een interactieve tijdlijn en een gekoppelde quiz. Hieronder wordt per component uitgelegd hoe deze is opgebouwd, welke functionaliteiten zijn geïmplementeerd en welke technische keuzes zijn gemaakt.
 
