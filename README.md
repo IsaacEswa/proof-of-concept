@@ -17,7 +17,14 @@ De detailpagina bestaat uit twee centrale componenten: een interactieve tijdlijn
 ## Tijdlijn
 De tijdlijncomponent laadt content dynamisch in vanuit een database (Directus), waardoor deze eenvoudig kan worden hergebruikt voor andere museumobjecten en musea. De tijdlijn bestaat uit tijdlijn items die automatisch op chronologische volgorde worden weergegeven.
 
-Elk tijdlijnitem bevat een uitklapbaar `details`-element met aanvullende informatie. Wanneer een gebruiker dit opent, wordt de extra content zichtbaar met een vloeiende animatie. Tegelijkertijd animeert het bijbehorende icoon om visuele feedback te geven over de geopende of gesloten status van het item.
+### Preview
+**Desktop**
+
+https://github.com/user-attachments/assets/a7a08e05-3626-4d46-aae3-1429bc7831da
+
+**Mobiel**
+
+https://github.com/user-attachments/assets/0141b971-5d5f-4d03-8ddb-92ae4f257f39
 
 ### Performance & Progressive Enhancement
 De tijdlijncomponent is opgezet met **performance** en **schaalbaarheid** als uitgangspunt. Content wordt server-side gerenderd vanuit Directus, waardoor de basis direct toegankelijk is zonder JavaScript.
@@ -33,7 +40,7 @@ https://github.com/IsaacEswa/proof-of-concept/blob/1ef41dd59e610682c28fa3e535e03
 * Visuele feedback via een animerend icoon
 * Geschikt voor zowel desktop als mobiel gebruik
 
-### Preview
+### Responsiveness
 https://github.com/user-attachments/assets/a171e74a-b621-4566-b493-c010b53ce56f
 
 [Bekijk issue](https://github.com/IsaacEswa/proof-of-concept/issues/4)
