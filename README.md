@@ -1,4 +1,5 @@
 # Project Q42 x Teylers Museum
+Dit project is ontwikkeld als design challenge voor Q42 en Teylers Museum. Het doel was om een interactieve, data-driven detailpagina te ontwerpen voor de Grote Elektriseermachine met Leidse Flessen, gericht op kinderen uit de bovenbouw van de basisschool. Deze README licht de opdracht, ontwerpkeuzes, technische implementatie en gebruikte componenten toe.
 
 ## Wie is Q42
 Q42 is een Nederlandse digital product studio uit Amsterdam en Rotterdam. Ze ontwerpen en ontwikkelen websites, apps, interactieve ervaringen, AI-oplossingen en digitale platforms voor organisaties. Hun specialiteit ligt in het bouwen van gebruiksvriendelijke digitale producten met een sterke technische basis.
@@ -11,6 +12,8 @@ Bekijk [hier](https://proof-of-concept-vdfp.onrender.com) mijn live website
 # Inhoudsopgave
 
 # Gebruik
+De detailpagina bestaat uit twee centrale componenten: een interactieve tijdlijn en een gekoppelde quiz. Hieronder wordt per component uitgelegd hoe deze is opgebouwd, welke functionaliteiten zijn geïmplementeerd en welke technische keuzes zijn gemaakt.
+
 ## Tijdlijn
 De tijdlijncomponent laadt content dynamisch in vanuit een database (Directus), waardoor deze eenvoudig kan worden hergebruikt voor andere museumobjecten en musea. De tijdlijn bestaat uit tijdlijn items die automatisch op chronologische volgorde worden weergegeven.
 
