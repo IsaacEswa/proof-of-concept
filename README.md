@@ -7,7 +7,9 @@ Q42 is een Nederlandse digital product studio uit Amsterdam en Rotterdam. Ze ont
 ## Klantvraag
 Ontwikkel een interactieve en data-driven detailpagina voor de Grote Elektriseermachine met Leidse Flessen van Teylers Museum, met als doel het verhaal achter het object op een **toegankelijke** en **speelse** manier over te brengen aan basisschoolkinderen via een **interactieve tijdlijn** en **gekoppelde quiz**. De oplossing moet **schaalbaar** en **herbruikbaar** zijn voor toekomstige museumobjecten binnen een digitaal museumplatform.
 
-Bekijk [hier](https://proof-of-concept-vdfp.onrender.com) mijn live website
+**[Bekijk de live demo](https://proof-of-concept-vdfp.onrender.com)**
+
+---
 
 # Inhoudsopgave
 
@@ -20,26 +22,20 @@ Bekijk [hier](https://proof-of-concept-vdfp.onrender.com) mijn live website
   - [HTML](#html)
   - [CSS](#css)
   - [JavaScript](#javascript)
+  - [Tech stack](#tech-stack)
   - [Code conventies](#code-conventies)
 - [Installatie](#installatie)
 - [Licentie](#licentie)
 
+---
+
 # Gebruik
-De detailpagina bestaat uit twee centrale componenten: een interactieve tijdlijn en een gekoppelde quiz. Hieronder wordt per component uitgelegd hoe deze is opgebouwd, welke functionaliteiten zijn geïmplementeerd en welke technische keuzes zijn gemaakt.
+De detailpagina bestaat uit twee centrale componenten: een **interactieve tijdlijn** en een **gekoppelde quiz**. Hieronder wordt per component uitgelegd hoe deze is opgebouwd, welke functionaliteiten zijn geïmplementeerd en welke technische keuzes zijn gemaakt.
 
 ## Tijdlijn
 De tijdlijncomponent laadt content dynamisch in vanuit een database (Directus), waardoor deze eenvoudig kan worden hergebruikt voor andere museumobjecten en musea. De tijdlijn bestaat uit tijdlijn items die automatisch op chronologische volgorde worden weergegeven.
 
-### Preview
-**Desktop**
-
 <img width="900" alt="image" src="https://github.com/user-attachments/assets/99571021-884a-4fe7-b8df-e23c4a685320" />
-
-
-**Mobile**
-
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/9a86c4d0-1f86-4a1b-8147-9ba531ed5802" />
-
 
 ### Performance & Progressive Enhancement
 De tijdlijncomponent is opgezet met **performance** en **schaalbaarheid** als uitgangspunt. Content wordt server-side gerenderd vanuit Directus, waardoor de basis direct toegankelijk is zonder JavaScript.
@@ -57,11 +53,15 @@ https://github.com/IsaacEswa/proof-of-concept/blob/1ef41dd59e610682c28fa3e535e03
 
 [Bekijk issue](https://github.com/IsaacEswa/proof-of-concept/issues/4)
 
+---
+
 ## Quiz
 De quizcomponent laadt vragen dynamisch in vanuit Directus en is gekoppeld aan de tijdlijn. Hierdoor kunnen vragen eenvoudig worden aangepast of hergebruikt voor andere museumobjecten.
 De quiz begeleidt gebruikers stap voor stap door de vragen. Na het beantwoorden ontvangt de gebruiker feedback met een uitleg waarom het antwoord goed of fout is. Daarnaast wordt een link aangeboden naar het bijbehorende tijdlijnitem, zodat gebruikers meer context kunnen ontdekken.
 
 Tijdens het beantwoorden van de quiz wordt gebruikgemaakt van een **stacked cards-animatie**. Wanneer een gebruiker op Controleren klikt of doorgaat naar de volgende vraag, schuift de huidige kaart weg en verschijnt de volgende kaart vanuit de stapel. Dit zorgt voor een speelse en vloeiende gebruikerservaring.
+
+<img width="900" alt="image" src="https://github.com/user-attachments/assets/6438aecd-7684-4397-a09e-ae9b693c23ba" />
 
 ### Performance & Progressive Enhancement
 De quizcomponent is opgezet met performance en toegankelijkheid als uitgangspunt. De formulieren worden server-side verwerkt, waardoor de volledige quiz functioneert zonder JavaScript. Hierdoor blijft de ervaring betrouwbaar en toegankelijk op alle apparaten.
@@ -81,15 +81,6 @@ De quizcomponent is opgezet met performance en toegankelijkheid als uitgangspunt
 ### Preview
 https://github.com/user-attachments/assets/fe9bcff2-af62-40ca-9cde-5e4b2b2f0406
 
-**Desktop**
-
-<img width="900" alt="image" src="https://github.com/user-attachments/assets/6438aecd-7684-4397-a09e-ae9b693c23ba" />
-
-**Mobile**
-
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/269c146f-5050-43ef-9d9a-e9fc00dceeb4" />
-
-
 ### Ontwerpkeuzes
 Een eerdere versie van de quiz maakte gebruik van volledig interactieve kaarten die gebruikers moesten oppakken en slepen om naar de volgende vraag te gaan. Hoewel dit speels was, bleek het minder gebruiksvriendelijk omdat de interactie niet direct duidelijk was en extra handelingen vereiste.
 
@@ -97,13 +88,16 @@ Daarom is gekozen voor een meer toegankelijke oplossing waarbij gebruikers antwo
 
 Deze aanpak volgt het principe van Progressive Enhancement. Zonder client-side JavaScript worden alle vragen onder elkaar weergegeven en blijft de quiz volledig bruikbaar. Wanneer JavaScript beschikbaar is, worden de vragen gepresenteerd als een stapel kaarten met extra animaties en interacties. Hierdoor krijgt iedere gebruiker toegang tot de inhoud, terwijl moderne browsers een rijkere ervaring ontvangen.
 
-### Oude quiz preview
+**Iteratie: eerste concept**
+
 https://github.com/user-attachments/assets/2f9526d7-7056-48ae-a435-b512cae3950e
 
 * Bekijk [issue](https://github.com/IsaacEswa/proof-of-concept/issues/14)
 * Bekijk [branche](https://github.com/IsaacEswa/proof-of-concept/tree/14-backup-draggable-pe-quiz-cards)
 
 # (Technische) kenmerken van de website
+Tijdens de ontwikkeling is gebruikgemaakt van moderne webtechnieken, waarbij toegankelijkheid, performance, herbruikbaarheid en Progressive Enhancement centraal stonden.
+
 ## HTML
 * Gebruik van semantische HTML zoals `headings`, `article`, `form`, `fieldset`, `legend`, `details` en `time`.
 * Keyboard support geïntegreerd (o.a. Enter-to-continue in quiz)
@@ -123,6 +117,16 @@ https://github.com/user-attachments/assets/2f9526d7-7056-48ae-a435-b512cae3950e
 * DOM-updates via DOMParser en component swapping i.p.v. full refresh.
 * View Transitions API voor vloeiende state-overgangen tussen quiz-states.
 * Pointer Events API voor drag-interacties in stacked cards quiz.
+
+## Tech Stack
+
+* HTML
+* CSS
+* JavaScript
+* Liquid
+* Node.js
+* Express
+* Directus CMS
 
 ## Code conventies
 * De volledige codebase is geschreven in het Engels, inclusief class names, variabelen en templates.
