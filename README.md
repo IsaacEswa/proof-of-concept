@@ -30,7 +30,7 @@ https://github.com/IsaacEswa/proof-of-concept/blob/1ef41dd59e610682c28fa3e535e03
 * Visuele feedback via een animerend icoon
 * Geschikt voor zowel desktop als mobiel gebruik
 
-### Responsive preview
+### Preview
 https://github.com/user-attachments/assets/a171e74a-b621-4566-b493-c010b53ce56f
 
 [Bekijk issue](https://github.com/IsaacEswa/proof-of-concept/issues/4)
@@ -56,7 +56,7 @@ De quizcomponent is opgezet met performance en toegankelijkheid als uitgangspunt
 * Geschikt voor zowel desktop als mobiel gebruik
 * Werkt zonder JavaScript dankzij server-side verwerking van formulieren
 
-### Quiz preview
+### Preview
 https://github.com/user-attachments/assets/fe9bcff2-af62-40ca-9cde-5e4b2b2f0406
 
 ### Ontwerpkeuzes
