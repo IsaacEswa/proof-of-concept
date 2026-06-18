@@ -20,12 +20,12 @@ De tijdlijncomponent laadt content dynamisch in vanuit een database (Directus), 
 ### Preview
 **Desktop**
 
-<img width="1327" height="610" alt="image" src="https://github.com/user-attachments/assets/99571021-884a-4fe7-b8df-e23c4a685320" />
+<img width="900" alt="image" src="https://github.com/user-attachments/assets/99571021-884a-4fe7-b8df-e23c4a685320" />
 
 
-**Mobiel**
+**Mobile**
 
-<img width="532" height="790" alt="image" src="https://github.com/user-attachments/assets/9a86c4d0-1f86-4a1b-8147-9ba531ed5802" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/9a86c4d0-1f86-4a1b-8147-9ba531ed5802" />
 
 
 ### Performance & Progressive Enhancement
@@ -41,9 +41,6 @@ https://github.com/IsaacEswa/proof-of-concept/blob/1ef41dd59e610682c28fa3e535e03
 * Geanimeerde open- en sluitinteractie
 * Visuele feedback via een animerend icoon
 * Geschikt voor zowel desktop als mobiel gebruik
-
-### Responsiveness
-https://github.com/user-attachments/assets/a171e74a-b621-4566-b493-c010b53ce56f
 
 [Bekijk issue](https://github.com/IsaacEswa/proof-of-concept/issues/4)
 
@@ -71,6 +68,15 @@ De quizcomponent is opgezet met performance en toegankelijkheid als uitgangspunt
 ### Preview
 https://github.com/user-attachments/assets/fe9bcff2-af62-40ca-9cde-5e4b2b2f0406
 
+**Desktop**
+
+<img width="900" alt="image" src="https://github.com/user-attachments/assets/6438aecd-7684-4397-a09e-ae9b693c23ba" />
+
+**Mobile**
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/269c146f-5050-43ef-9d9a-e9fc00dceeb4" />
+
+
 ### Ontwerpkeuzes
 Een eerdere versie van de quiz maakte gebruik van volledig interactieve kaarten die gebruikers moesten oppakken en slepen om naar de volgende vraag te gaan. Hoewel dit speels was, bleek het minder gebruiksvriendelijk omdat de interactie niet direct duidelijk was en extra handelingen vereiste.
 
@@ -84,7 +90,7 @@ https://github.com/user-attachments/assets/2f9526d7-7056-48ae-a435-b512cae3950e
 * Bekijk [issue](https://github.com/IsaacEswa/proof-of-concept/issues/14)
 * Bekijk [branche](https://github.com/IsaacEswa/proof-of-concept/tree/14-backup-draggable-pe-quiz-cards)
 
-# (Technische) kenmerken
+# (Technische) kenmerken van de website
 ## HTML
 * Gebruik van semantische HTML zoals `headings`, `article`, `form`, `fieldset`, `legend`, `details` en `time`.
 * Keyboard support geïntegreerd (o.a. Enter-to-continue in quiz)
