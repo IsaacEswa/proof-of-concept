@@ -20,11 +20,13 @@ De tijdlijncomponent laadt content dynamisch in vanuit een database (Directus), 
 ### Preview
 **Desktop**
 
-https://github.com/user-attachments/assets/a7a08e05-3626-4d46-aae3-1429bc7831da
+<img width="1327" height="610" alt="image" src="https://github.com/user-attachments/assets/99571021-884a-4fe7-b8df-e23c4a685320" />
+
 
 **Mobiel**
 
-https://github.com/user-attachments/assets/0141b971-5d5f-4d03-8ddb-92ae4f257f39
+<img width="532" height="790" alt="image" src="https://github.com/user-attachments/assets/9a86c4d0-1f86-4a1b-8147-9ba531ed5802" />
+
 
 ### Performance & Progressive Enhancement
 De tijdlijncomponent is opgezet met **performance** en **schaalbaarheid** als uitgangspunt. Content wordt server-side gerenderd vanuit Directus, waardoor de basis direct toegankelijk is zonder JavaScript.
