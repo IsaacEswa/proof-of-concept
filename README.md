@@ -7,6 +7,9 @@ Q42 is een Nederlandse digital product studio uit Amsterdam en Rotterdam. Ze ont
 ## Klantvraag
 Ontwikkel een interactieve en data-driven detailpagina voor de Grote Elektriseermachine met Leidse Flessen van Teylers Museum, met als doel het verhaal achter het object op een **toegankelijke** en **speelse** manier over te brengen aan basisschoolkinderen via een **interactieve tijdlijn** en **gekoppelde quiz**. De oplossing moet **schaalbaar** en **herbruikbaar** zijn voor toekomstige museumobjecten binnen een digitaal museumplatform.
 
+### Mijn oplossing
+Mijn oplossing combineert een interactieve tijdlijn met een gekoppelde quiz, waardoor kinderen het verhaal stap voor stap ontdekken en hun kennis direct kunnen toetsen. Door uitleg en verwijzingen naar de tijdlijn worden gebruikers gestimuleerd om informatie actief te verwerken, wat aansluit bij begrijpend lezen en ontdekkend leren. De data-driven opzet zorgt er bovendien voor dat de componenten eenvoudig herbruikbaar zijn
+
 **[Bekijk de live demo](https://proof-of-concept-vdfp.onrender.com)**
 
 ---
